@@ -1,0 +1,97 @@
+<?php echo $this->Session->flash(); ?>
+<div class="box_ops brd_bx st_empr">
+
+<h1>Listado de Actualizaciones de Dispositivos</h1>
+
+</div>
+
+
+<!-- # llistat de actualitzacións de dispositius # -->
+
+<div class="box_list st_emp">
+
+<div class="mlist grn">
+	<ul cellpadding="0" cellspacing="0">
+	
+	<?php
+	$i = 0;
+	foreach ($actualizacionDispositivos as $actualizacionDispositivo): ?>
+	<li>
+		<!--<span class="btn inf"><ul><?php echo h($consejo['users']['username']); ?>&nbsp;</ul>
+		<ul>F.Últ.Msg; 
+		<?php foreach ($ultMensajes as $ultMensaje){
+			if ($ultMensaje['Consejo']['idAsunto'] == $consejo['Consejo']['idAsunto']){
+				echo $ultMensaje['Consejo']['created'];
+			}
+		} ?>
+		</ul>
+		</span>
+		-->
+		<span class="inf">
+			<ul>Fecha Solicitud: 
+				<?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['fsolicitud']); ?>&nbsp;</ul>
+			<ul>Fecha Entrega: 
+				<?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['fentrega']); ?>&nbsp;</ul>
+		</span>
+		<div title="NºActualizaciones" class="btn st_msg"><?php echo $this->Html->image("px_tr.gif"); ?></div>
+		<?php 
+		foreach ($cuentaActualizaciones as $cuentaActualizacion){
+			if ($cuentaActualizacion['ActualizacionDispositivo']['idReproductor'] == $actualizacionDispositivo['ActualizacionDispositivo']['idReproductor']){ ?>
+				<span class="inf"><?php echo $cuentaActualizacion[0]['nActualizaciones']; ?></span>
+		<?php }
+		}
+		?>
+		<?php echo 'Situación: ';
+			switch ( $actualizacionDispositivo['ActualizacionDispositivo']['situacion'] ) { 
+			case 'pendiente': 
+				echo 'Pendiente';
+				break;
+			case 'error':
+				echo 'Error';
+				//Mostrar error;
+				break;
+			case 'caducada':
+				echo 'Caducada';
+				break;
+			case 'ok':
+				echo 'OK';
+				break;
+		} ?>
+		<!--<td><?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['id']); ?>&nbsp;</td>-->
+		<div title=<?php echo $actualizacionDispositivo['users']['username']; ?> class="btn st_usu"><?php echo $this->Html->image("px_tr.gif"); ?></div>
+		
+		<!--<span class="inf"></span>-->
+		<!--<td><?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['idReproductor']); ?>&nbsp;</td>-->
+		<td><?php echo $this->Html->link(h($actualizacionDispositivo['dispositivo']['descripcion']), array('action' => 'listadoActualizacionDispositivo', $actualizacionDispositivo['ActualizacionDispositivo']['idReproductor']), array('title'=>'Ver actualizaciones del dispositivo')); ?>&nbsp;</td>
+		<!--<td><?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['contenido']); ?>&nbsp;</td>
+		<td><?php echo h($actualizacionDispositivo['ActualizacionDispositivo']['observaciones']); ?>&nbsp;</td>-->
+		<!--<?php
+		$json_string =    file_get_contents("http://api.wunderground.com/api/7ec5f6510a4656df/geolookup/forecast/q/40121.json");
+		$parsed_json = json_decode($json_string);
+		$forecast = $parsed_json->forecast->txt_forecast;
+		$temp = $forecast->date;
+		$title = $forecast->forecastday->title;
+		$for = $forecast->forecastday->fcttext;
+		echo "Current date is ${temp},  ${title}: ${for}\n";
+
+		foreach($forecast->forecastday as $value) {
+		   echo $value['period'];
+		   echo $value['icon'];
+		   // etc
+		}
+		?>
+		-->
+		
+		
+		
+	</li>
+<?php endforeach; ?>
+	</ul>
+	
+</div>
+</div>
+<div class="box_btns">
+	<ul>
+		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'index'), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
+	</ul>
+</div>

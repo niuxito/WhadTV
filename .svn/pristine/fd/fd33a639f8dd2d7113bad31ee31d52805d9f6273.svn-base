@@ -1,0 +1,29 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteCond %{HTTP_HOST} ^www\. [NC]
+   RewriteRule ^(.*)$ http://whadtv.com/$1 [R=301,L]
+
+   RewriteRule    ^$ app/webroot/    [L]
+   RewriteRule    (.*) app/webroot/$1 [L]
+
+</IfModule>
+<Files *.css>
+	# SetOutputFilter GZIP
+</Files>
+<Files *.js>
+	# SetOutputFilter GZIP
+</Files>
+
+
+<IfModule mod_expires.c>
+	<filesmatch "\.(jpg|JPG|gif|GIF|png|PNG|css|ico|js)$">
+		ExpiresActive on
+		ExpiresDefault "access plus 31 days"
+		Header set Cache-Control "public"
+	</filesmatch>
+</IfModule>
+Options -Indexes
+RedirectMatch 404 /\\.svn(/.*|$)
+#order allow,deny
+#deny from all
+

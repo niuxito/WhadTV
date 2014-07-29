@@ -1,0 +1,378 @@
+var context;
+var canvas;
+var fondo;
+var texto = "";
+var colorTexto;
+jQ(document)
+		.ready(
+				function() {
+
+					//jQ(".tip").tipTip({maxWidth: '600px'});
+					jQ(".progress").hide();
+
+					if (typeof stage !== 'undefined') {
+    					generarCartel();
+					}				
+
+					jQ("#video").show();
+					jQ("#imagen").hide();
+					//jQ("#cartel").hide();
+					jQ("#pest_video").click(function() {
+						jQ(".pest li").each(function(){
+							jQ(this).removeClass("up");
+						});
+						jQ("#pest_video").parent().addClass("up");
+						jQ("#video").show();
+						jQ("#imagen").hide();
+					//	jQ("#cartel").hide();
+					});
+					jQ("#pest_imagen").click(function() {
+						jQ(".pest li").each(function(){
+							jQ(this).removeClass("up");
+						});
+						jQ("#pest_imagen").parent().addClass("up");
+						jQ("#imagen").show();
+						jQ("#video").hide();
+					//	jQ("#cartel").hide();
+					});
+					jQ("#pest_cartel").click(function() {
+						/*jQ(".pest li").each(function(){
+							jQ(this).removeClass("up");
+						});
+						jQ("#pest_cartel").parent().addClass("up");
+						jQ("#cartel").show();
+						jQ("#imgFile").hide();
+						jQ("#video").hide();
+						jQ("#imagen").hide();
+						*/
+						if(confirm("¿Desea generar un nuevo Cartel?")) {
+							//document.location.href= 'Carteles/index.php';
+							document.getElementById('subWin').style.display = 'none';
+							window.open(
+					  			'Carteles/index',
+					  			'_blank'
+							);
+							
+						}
+						//jQ('#cartel #generar').removeAttr('disabled');
+					});
+					jQ(".progress").hide();
+					//console.log("Preparado");
+
+					//initCanvas();
+					
+					
+					/*jQ('#colorFondo').minicolors({
+						control: 'wheel',
+						inline:false,
+						defaultValue: '#D76323',
+						change: function(){
+							fondo = jQ(this).val();
+							refreshCanvas();
+						}
+					});
+					fondo = '#D76323';
+					jQ('#colorTexto').minicolors({
+						control: 'wheel',
+						inline:false,
+						defaultValue: '#FFFFFF',
+						change: function(){
+							colorTexto = jQ(this).val();
+							refreshCanvas();
+						}
+					});
+					colorTexto = 'white';
+					jQ("#texto_canvas").change(function(){
+						texto = jQ(this).val();
+						refreshCanvas();
+						//canvas.
+						var formulario = jQ(this)[0].form;
+						var submitBtn = jQ(formulario).find('[type=submit]')[0];
+						
+						/*var archivo = formulario.find('#cartelFile');
+						jQ(archivo).val(canvas.toDataURL);
+						var img64 = canvas.toDataURL();
+						jQ("#contenido_cartel").val(img64);
+						jQ(submitBtn).removeAttr('disabled');
+
+						//console.log(jQ(formulario).find('[type=submit]'));
+					});*/
+					
+
+						
+					
+				
+					    
+					/*var bar = jQ('.bar');
+					var percent = jQ('.percent');
+					var status = jQ('#status');
+					   
+					jQ('form').ajaxForm({
+					    beforeSend: function() {
+					    	console.log("HOla!!!");
+					        status.empty();
+					        var percentVal = '0%';
+					        bar.width(percentVal)
+					        percent.html(percentVal);
+					    },
+					    uploadProgress: function(event, position, total, percentComplete) {
+					        var percentVal = percentComplete + '%';
+					        bar.width(percentVal)
+					        percent.html(percentVal);
+					    },
+					    success: function() {
+					        var percentVal = '100%';
+					        bar.width(percentVal)
+					        percent.html(percentVal);
+					    },
+						complete: function(xhr) {
+							status.html(xhr.responseText);
+						}
+					}); 
+*/
+					
+					
+					
+					jQ(' form').ajaxForm(
+							{	
+								target : '#myResultsDiv',
+								beforeSubmit : function(formData, jqForm,
+										options) {
+									console.log(jQ(jqForm));
+									var descripcion = jQ(jqForm).find('#VideoDescripcion')[0];
+									if(jQ(descripcion).val() == ""){
+										alert("Debes introducir un nombre para reconocer tu contenido");
+										jqForm.preventDefault();
+
+									}
+								},
+								uploadProgress : function(event, position,
+										total, percentComplete) {
+									var percentVal = percentComplete + '%';
+									if (percentVal != '100%') {
+										jQ('.bar').width(percentVal);
+										jQ('.percent').html(percentVal);
+										jQ('#status').html("Cargando...");
+									} else {
+										jQ('#status').html("Cargado");
+										jQ(".progress").hide();
+										closeSubWin();
+										window.location.reload(); 
+									}
+								},
+
+								 success: function (responseText, statusText,
+								 xhr){// window.location.reload(); 
+								 },
+
+								 
+								complete : function(responseText, statusText,
+										xhr) {
+									//window.location.reload();
+									alert("Guardado!!!");
+								}
+
+							});
+
+					jQ('#imagen form, #video form').ajaxForm(
+							{	
+								target : '#myResultsDiv',
+								beforeSubmit : function(formData, jqForm,
+										options) {
+									console.log(jQ(jqForm));
+									var descripcion = jQ(jqForm).find('#VideoDescripcion')[0];
+									if(jQ(descripcion).val() == ""){
+										alert("Debes introducir un nombre para reconocer tu contenido");
+										jqForm.preventDefault();
+
+									}
+									jQ(".progress").show();
+								},
+								uploadProgress : function(event, position,
+										total, percentComplete) {
+									var percentVal = percentComplete + '%';
+									if (percentVal != '100%') {
+										jQ('.bar').width(percentVal);
+										jQ('.percent').html(percentVal);
+										jQ('#status').html("Cargando...");
+									} else {
+										jQ('#status').html("Cargado");
+										jQ(".progress").hide();
+										closeSubWin();
+									}
+								},
+								
+								success: function (responseText, statusText,
+								 xhr){
+								 	 window.location.reload(); 
+								},
+								 
+								complete : function(responseText, statusText,
+										xhr) {
+									window.location.reload();
+									
+								}
+
+							});
+					
+					jQ('form [type=submit]').attr('disabled', 'disabled');
+
+					jQ('.video_input')
+							.change(
+									function() {
+										console
+												.log("se ha introducido un video");
+										jQ("[name='temporal']").remove();
+										jQ("[name='temporal']")
+												.attr('name', '');
+										var filesToUpload = this.files[0];
+
+										if (filesToUpload != undefined
+												&& !filesToUpload.type
+														.match(/video.*|shockwave.*/)) {
+											alert(" Este archivo no es un video.");
+										} else {
+											console.log(filesToUpload.size);
+											if (filesToUpload.size > max_file_size) {
+												console
+														.log("El fichero es muy grande");
+												alert("Debes subir un fichero de menos de "
+														+ max_file_size / 1000000 + "MB");
+											} else {
+												jQ('form [type=submit]')
+														.removeAttr('disabled');
+											}
+										}
+										;
+									});
+
+					jQ('.img_input')
+							.change(
+									function() {
+										console
+												.log("se ha introducido una imagen");
+										jQ("[name='temporal']").remove();
+										jQ("[name='temporal']")
+												.attr('name', '');
+										var filesToUpload = this.files[0];
+
+										if (filesToUpload != undefined
+												&& !filesToUpload.type
+														.match(/image.*|/)) {
+											alert(" Este archivo no es una imagen.");
+										} else {
+											console.log(filesToUpload.size);
+											if (filesToUpload.size > max_file_size) {
+												console
+														.log("El fichero es muy grande");
+												alert("Debes subir un fichero de menos de "
+														+ ( max_file_size / 1000000 ) + "MB");
+											} else {
+												jQ('form [type=submit]')
+														.removeAttr('disabled');
+											}
+										}
+										;
+									});
+
+							jQ('.cartel_input').change(function(){
+								jQ('form [type=submit]').removeAttr('disabled');
+							});
+					
+
+				});
+				//jQ('')
+
+
+function initCanvas(){
+	canvas = document.getElementById('cartel_canvas');
+    context = canvas.getContext("2d");
+}
+
+function refreshCanvas(){
+	x = canvas.width / 2;
+	y = canvas.height / 2;
+	var altoTexto = 20;
+	
+	
+	context.textAlign = 'center';
+	context.lineWidth = 5;
+	
+	wrapText(context, texto, x, y, canvas.width, canvas.height, 30 + 8, altoTexto);
+	// stroke color
+	
+	//console.log(context.measureText(texto));
+	//context.fillText(texto, canvas.width/2, canvas.height/2);
+}
+
+function wrapText(context, text, x, yIni, maxWidth, maxHeight, lineHeight, alto) {
+        var words = text.split(' ');
+
+        do{
+        	var y = yIni;
+        	context.fillStyle = fondo;
+        	context.fillRect(0, 0, canvas.width, canvas.height);
+        	context.fillStyle = colorTexto;
+        	context.font = alto+'pt Calibri';
+	        var line = '';
+	        var lineas = {};
+	        var nlineas = 0;
+
+	        for(var n = 0; n < words.length; n++) {
+
+	          var testLine = line + words[n] + ' ';
+	          var metrics = context.measureText(testLine);
+	          var testWidth = metrics.width;
+	          if (testWidth > maxWidth && n > 0) {
+	            //context.fillText(line, x, y);
+	            lineas[nlineas++] = line; 
+	            line = words[n] + ' ';
+	            
+	            console.log(nlineas);
+	          }
+	          else {
+	            line = testLine;
+	          }
+	        }
+	       // context.fillText(line, x, y);
+	        lineas[nlineas++] = line; 
+	        for(var n = 0; n < nlineas; n++){
+
+	        	 context.fillText(lineas[n], x, y);
+	        	 y += lineHeight;
+	        }
+	        console.log(y);
+	        alto--;
+	        lineHeight = alto + (alto/5);
+	        yIni = yIni -2;
+	    }while(y-lineHeight > maxHeight);
+      }
+
+function generarCartel(){
+	//console.log("Generando cartel...");
+	stage.toDataURL({
+        mimeType: "image/png",
+		quality: 1,
+		callback: function(dataUrl){
+			
+			jQ("#contenido_cartel").val(dataUrl);
+			
+			var c = document.getElementById("cartel_canvas");
+			var ctxc = c.getContext("2d");
+			var image = new Image();
+			image.src = dataUrl;
+			ctxc.drawImage(image,0,0);
+		}
+    });
+	//var img64 = canvas.toDataURL();
+	
+	
+	//jQ('form [type=submit]').removeAttr('disabled');
+	/*console.log("Generando cartel...");
+	var img64 = canvas.toDataURL();
+	*/
+							
+	//jQ('#cartel .box_btns [type=submit]').removeAttr('disabled');
+	//console.log("Imagen generada y cargada");
+	//jQ("#cartelFile").						
+}

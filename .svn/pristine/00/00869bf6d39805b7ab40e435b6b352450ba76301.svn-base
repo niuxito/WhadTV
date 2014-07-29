@@ -1,0 +1,44 @@
+<?php echo $this->Session->flash(); ?>
+<div class="box_ops brd_bx st_empr">
+
+<h1>Listado de usuarios</h1>
+
+<!-- # llistat de vídeos # -->
+
+<div class="box_list st_emp">
+
+<div class="mlist grn">
+	<ul cellpadding="0" cellspacing="0">
+		<?php
+		$i = 0;
+		foreach ($users as $user): ?>
+			<li>
+				<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
+				<td><?php echo $this->Html->link(h($user['User']['username']), array('action' => 'editarUsuario', $user['User']['id']), array('title'=>'Modificar contraseña')); ?>&nbsp;</td>
+				<span class="inf"><ul>Fecha Alta: <?php echo h($user['User']['timestampCreacion']); ?>&nbsp;</ul>
+				<ul>Último Acceso: <?php echo h($user['User']['timestampLAcceso']); ?>&nbsp;</ul></span>
+				
+				<div class="ops">
+					<?php echo $this->Html->Link($this->Html->image('px_tr.gif'), array('action'=>'listadoempresasusuarios', $user['User']['id']), array('title'=>'Empresas', 'escape'=>false, 'class'=>'btn st_emp')); ?>
+					<span class="inf"><?php echo $user['0']['empresas']; ?></span>
+					<?php echo $this->Form->postLink($this->Html->image('px_tr.gif'), array('action'=>'deleteUsuario', $user['User']['id']),array('title'=>'Eliminar usuario','escape'=>false, 'class'=>'btn st_del') ,__('¿Estás seguro de que deseas eliminar este usuario?')); ?>
+				
+				</div>
+				
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	
+</div>
+</div>
+<div class="box_btns">
+	<ul>
+		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'index'), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
+	</ul>
+</div>
+<div class="acciones">
+	<h3><?php echo __('Acciones'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Nuevo usuario'), array('action' => 'addUsuario')); ?></li>
+	</ul>
+</div>

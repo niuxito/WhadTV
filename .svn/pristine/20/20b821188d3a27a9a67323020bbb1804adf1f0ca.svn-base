@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+div.listas{
+	clear: none;
+	width: 200px;
+	overflow: scroll;
+	height: 100%;
+	float:left;	
+}
+
+.listas li{
+	list-style: none;
+	width: 80%;
+	//border-radius: 5px;
+	background-color: 
+	#AAA;
+	text-align: center;
+	padding: 6px 16px;
+	box-shadow: 0px 1px 1px #090707;	
+	margin: 5px;
+	height: 25px;
+}
+.listas ul{
+	margin:0px	
+}
+.listas a{
+	margin: 5px;
+	width: 70%;
+	text-align: center;
+	text-decoration: none;
+	padding: 0 5px;
+	display: block;
+	float:left;
+	
+}

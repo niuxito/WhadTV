@@ -1,0 +1,15 @@
+Version 1.2.1
+ - Implemented beanstalkd 1.2 features
+  * reserve_with_timeout()
+
+ - Changed version style. 
+   Now reflects server version and then client build
+ - Fixed peek switching mode. 
+   'random peek' and 'sequential peek' both work now.
+ - Added BeanQueueJob::check() to validate jobs
+
+Version 0.10.1
+ - Fixed typo during DRAINING mode detection
+
+Version 0.10
+ - Initial Release 

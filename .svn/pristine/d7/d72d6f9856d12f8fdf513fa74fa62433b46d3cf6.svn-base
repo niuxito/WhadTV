@@ -1,0 +1,87 @@
+#content #main{
+	width: 567px;
+	display: block;
+	float: left;
+	height: 417px;
+	
+}
+
+#content #registro{
+	width: 284px;
+	float: left;
+	display: block;
+	margin: 57px 0 0 63px;
+		
+}
+
+#content #main #titulo{
+	color: #4BA534;
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0 0 20px 14px;
+	
+}
+
+#content #main #contenido{
+	border-radius: 40px;
+	background-color: #4BA534;
+	height: 335px;
+	width: 564px;
+	color: white;	
+	padding: 23px 17px 21px 20px;
+	line-height: 23px;
+}
+
+#content #registro input{
+	width: 170px;
+	float: right;
+	margin-bottom: 18px;
+	
+	border: 2px solid #4BA534;
+	border-radius: 10px;
+	float:left;
+	clear: none;
+	height: 22px;
+	font-size: 11px;	
+	letter-spacing: default;
+}
+
+#content #registro label{
+	font-size: 90%;
+	display: inline;
+	float:left;
+	width: 90px;
+	color: #5C4339;
+	
+	
+}
+#content #registro .submit input{
+	width: 100%;
+	background-color: #99141E !important;
+	background-image: none;
+	border-radius: 10px;
+	height: 28px;
+	vertical-align: middle;
+	padding: 0px;
+	border: none;
+	font-size: 16px;
+	letter-spacing: 5px;
+	
+}
+
+.negrita{
+	font-weight: bold;
+}
+
+#UserNormas{
+	width: 10px !important;
+}
+#content #registro label[for=UserNormas]{
+	font-size: 65%;
+	display: inline;
+	float: left;
+	width: 92%;
+	color: #5C4339;
+	clear: none;
+	
+}

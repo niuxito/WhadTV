@@ -1,0 +1,31 @@
+<div id="footer">
+
+<div class="wrap">
+
+
+<div class="left">
+
+<ul>
+<li class="ini">&copy; whadtv</li>
+<li><a href=""><?php echo	$this->Html->link('Condiciones legales', array('controller'=>'pages','action'=>'legal'),array('target'=>'_blank')) ?></a></li>
+<li><a href=""><?php echo	$this->Html->link('FAQ', array('controller'=>'pages','action'=>'faq'),array('target'=>'_blank')) ?></a></li>
+<li><?php echo $this->Html->link(__('Contactar'), array('controller'=>'users','action'=>'contacto')); ?></li>
+</ul>
+
+</div>
+
+<div class="right">
+	<?php
+	$user = $this->Session->read('Auth');
+	if( isset($user['User'])){
+		if ($cuentaConsejos > 0 ){ 
+			echo $this->Html->link(__('Menú Consejos'), array('controller'=>'Consejos','action'=>'listadoConsejos',$user['User']['id']));
+		}else{
+			echo $this->element('consejo');
+		}
+	} ?>
+</div>
+
+</div><!-- /wrap -->
+
+</div><!-- /footer -->

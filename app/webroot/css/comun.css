@@ -1,0 +1,76 @@
+.logout {
+	float: right;	
+}
+ul{
+	
+	list-style: none;
+	display: list-item;
+	margin: 5px auto;
+	height: 30px;
+	width: 400px;
+	vertical-align: baseline;
+	outline: 0;	
+	//border-style: solid;
+}
+
+li{
+	float:left;
+	background-color: #003D4C;
+	padding: 5px 10px;
+	margin: 3px 1px auto;
+}
+li > a{
+	color: white !important;
+}
+
+.procesos {
+	position: relative;
+	//border-style: solid;
+	float:right;
+	width: 700px;
+	background-color: #D7F7F7;
+}
+.procesos > li {
+		float:right;
+}
+.procesos > h2 {
+	float:left;
+	margin: 3px;
+	background-color: transparent;
+}
+.viviendas > .titulo{
+	clear: both;
+}
+.input{
+	clear:none;	
+	float:left;
+}
+.filtro > form .input{
+	width: 180px;
+}
+.finder {
+	float: left;
+	border-style: solid;
+	clear: both;
+	width: 500px;
+	border-radius: 10px;
+	border-width: 2px;
+	padding: 5px;
+}
+
+.video-container {
+	margin: auto;
+	clear: both;
+	width: 360px;
+	padding: 50px;
+	background-color: #996;
+	height: 240px;
+	display: block;
+	border-style: solid;
+	border-color: black;
+	border-radius: 10px;
+}
+
+div.actions {
+	clear:both;	
+}

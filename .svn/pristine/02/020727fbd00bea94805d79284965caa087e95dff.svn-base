@@ -1,0 +1,345 @@
+*{
+    //margin: 0px;
+    //margin: auto;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    margin:auto;
+    display: block;
+}
+
+/*
+#cantainer {
+    vertical-align: middle;
+    margin:auto;
+    //height:100%;
+    //width:100%;
+    //display: table;
+    //vertical-align: middle;
+}
+*/
+#img_preview{
+    background-color: #FFFFFF;
+
+}
+
+.divcls{
+    border:1px solid;
+    position: relative;
+    background-color:#FFFFFF;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    width: 1280px;
+    height: 720px;
+    //top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.mnuprincipal{
+    width: 100%;
+    height: 143px;
+    top: 0px;
+    position: absolute;
+    -webkit-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    z-index: 100;
+    border: 1px solid;
+}
+
+.mnuprincipal .opc {
+    overflow: hidden;
+    position: relative;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    width: 70%;
+    height: 100%;
+    //height: 143px;
+    float: left;
+    
+}
+
+.mnuprincipal .opc li{
+    float: left; 
+    list-style: none;
+    margin: 10px;
+    //opacity: 1;
+}
+
+.mnuprincipal.opc.bg{
+    background-color: #000000;
+    z-index: -1;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#imagenmnuprincipal{
+    position: absolute;
+    top: 133px; 
+    left: 205px; 
+    z-index: 101;
+    transition: all 1s ease-in-out;
+}
+
+.mnuOpciones{
+    position: absolute;
+    z-index: 100;
+    top: 146px;
+    left: -205px;
+    transition: all 1s ease-in-out;
+}
+
+.mnuOpciones .contenedor {
+    border: 1px solid;
+}
+
+.mnuOpciones .contenedor-vertical {
+    width: 160px;
+    height: 492px;
+    padding: 20px 20px;
+    position: relative; 
+    display: block;
+}
+
+.mnuOpciones .contenedor-vertical .bg{
+    background-color: #000000;
+    z-index: -1;
+    opacity: 0.4;
+    width: 159px;
+    height: 491px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.mnuOpciones .pila {
+    overflow: hidden;
+}
+
+.mnuOpciones .pila-vertical {
+    width: 160px;
+    height: 499px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.mnuOpciones .pila-vertical ul{
+    overflow: hidden;
+    position: relative;
+    top: 0px;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    height: 950px;
+}
+
+.mnuOpciones .elemento {
+    width: 160px;
+    height: 90px;
+}
+
+.mnuOpciones .elemento-vertical {
+    margin-bottom: 10px;
+    float: left; 
+    list-style: none;
+}
+
+.mnuOpciones .elemento-vertical .box{
+    width: 160px;
+    height: 90px;   
+}
+
+.mnuOpciones .elemento-vertical .texto{
+    text-align: center;
+    display: inline-block;
+    position:relative;
+    font-size: 18px;
+    width: 160px;
+    height: 90px;
+    background-color: #FFF;
+}
+
+#idText.mnuOpciones .elemento-vertical .texto{
+    height: 30px;
+}
+
+#idText.mnuOpciones .elemento {
+    height: 30px;
+}
+
+.mnuedit{
+    width: 100%;
+    height: 0px;
+    bottom: 0px;
+    position: fixed;
+    //vertical-align: bottom;
+    //border-collapse: collapse;
+    transition: all 1s ease-in-out;
+}
+
+.mnuedit .opc {
+    overflow: hidden; 
+    position: absolute; 
+    top: 0px; 
+    margin: 0px; 
+    padding: 0px; 
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid ;
+    z-index: 100;
+}
+
+.mnuedit .opc li{
+    float: left; 
+    list-style: none;
+    margin: 10px;
+}
+
+.mnuedit .opc .bg{
+    background-color: #000000;
+    z-index: -1;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.mnuedit .color{
+    float:left;
+    margin-left: 10px;
+}
+
+.mnuedit .text{
+    position: absolute;
+    width: 100%;
+}
+
+.mnuedit .msgtext{
+    margin-left: 10px;
+    width: 90%;
+}
+
+#The_colorPicker{
+    transition: all 1s ease-in-out;
+}
+
+#idFuentes{
+    //border-bottom: 0px solid transparent !important;
+    //border-top: 6px solid white;
+    top: auto !important;
+    //bottom: -6px;
+    //bottom: 100%;
+}
+
+#cltexto{
+    color: #FFF;
+}
+
+
+ a.btn, a.btn.up {
+    font-size: 16px;
+    line-height: 16px;
+    background: #d76323;
+    border-color: #c55216;
+    text-shadow: -1px -1px 0 #bd4807;
+    margin-top: 10px;
+    padding: 7px 15px;
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    display: -webkit-inline-flex;
+    text-decoration: none;
+    color: white;
+    border-radius: 4px;
+    border: 1px solid #c55216;
+    margin-left: 70%;
+    width: 110px;
+}
+
+a.btn:hover, .orient_select:hover{
+    background-color: #e96521; border: 1px solid #c55216;
+    -moz-text-shadow: -1px -1px 0 #cf4f0d; text-shadow: -1px -1px 0 #cf4f0d; -webkit-text-shadow: -1px -1px 0 #cf4f0d;
+    -moz-box-shadow: 0 0 5px #ff7e00; -webkit-box-shadow: 0 0 5px #ff7e00; box-shadow: 0 0 5px #ff7e00;
+}
+
+.box_btns{
+    display: block;
+    position: relative;
+    width: 29%;
+    //height: 100%;
+    float: left;
+}
+
+.orientation_box{
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.orient_select{
+    float: left;
+    margin: 2% 6%;
+    background-color: #d76323;
+    position: relative;
+    color: white !important;
+    text-align: center;
+    border: 1px solid #c55216;
+    text-shadow: -1px -1px 0 #bd4807;
+    text-decoration: none;
+}
+
+.horizontal{
+    width: 160px;
+    height: 90px;
+    margin-top: 12%;
+
+}
+
+.vertical{
+    width: 90px;
+    height: 160px;
+}
+
+.orient_select:hover{
+    background-color: #e96521; border: 1px solid #c55216;
+    -moz-text-shadow: -1px -1px 0 #cf4f0d; text-shadow: -1px -1px 0 #cf4f0d; -webkit-text-shadow: -1px -1px 0 #cf4f0d;
+    -moz-box-shadow: 0 0 5px #ff7e00; -webkit-box-shadow: 0 0 5px #ff7e00; box-shadow: 0 0 5px #ff7e00;
+}
+
+#btnimagenmnuprincipal {
+    //top: 140px;
+    height: 24px;
+    width: 24px
+}
+
+.farriba{
+    top: 133px !important;
+}
+
+.fabajo{
+    top:140px !important;
+}
+
+.farriba img{
+    background: url('../app/webroot/img/cartel/mnu_farriba.png') ;
+    
+}
+
+.fabajo img{
+    background: url('../app/webroot/img/cartel/mnu_fabajo.png') ;
+
+}
+

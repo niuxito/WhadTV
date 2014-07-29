@@ -1,0 +1,11 @@
+#subscribeButton.login{
+	font-size: 21px;
+	padding-bottom: 3px;
+}
+
+#sendMensaje{
+	background-image: url(../img/icons/ico_message.png);
+	background-repeat: no-repeat;
+	background-position: 15px 11px;
+	padding: 12px 19px 10px 52px;
+}

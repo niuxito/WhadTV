@@ -1,0 +1,48 @@
+<?php 
+App::import('Controller', 'Users');
+App::import('Controller', 'EmpresaUsuarios');
+App::import('Controller', 'Videos');
+
+class CartelesController extends AppController{
+
+	public $components = array('DebugKit.Toolbar','RequestHandler', 'Auth');
+	
+	public function beforeFilter(){
+		parent::beforeFilter();
+	}
+
+	public function clearCache(){
+		Cache::clear(false);
+	}
+
+	public function index(){
+		/*
+		$videoC = new VideosController();
+		$videoC->constructClasses();
+		$resultado = $videoC->Video->find('all', array('fields'=>'count(idVideo) total'));
+		$nVideos = $resultado[0][0];
+				
+		$resumen['videos'] = $nVideos;
+		
+		$this->set('resumen',$resumen);
+		*/
+		//$this->layout = "empty";
+		$this->render('index', 'empty');
+	}
+
+	/**
+	 * addCartel method
+	 *
+	 * @return void
+	 */
+	public function addCartel() {
+		
+	}
+
+	public function addImage(){
+
+	}
+
+}
+
+?>

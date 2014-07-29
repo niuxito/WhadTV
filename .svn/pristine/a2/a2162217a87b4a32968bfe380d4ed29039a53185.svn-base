@@ -1,0 +1,49 @@
+<?php
+/* Dispositivo Fixture generated on: 2012-04-30 16:49:42 : 1335797382 */
+
+/**
+ * DispositivoFixture
+ *
+ */
+class DispositivoFixture extends CakeTestFixture {
+/**
+ * Table name
+ *
+ * @var string
+ */
+	public $table = 'dispositivo';
+
+/**
+ * Fields
+ *
+ * @var array
+ */
+	public $fields = array(
+		'idDispositivo' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary', 'collate' => NULL, 'comment' => ''),
+		'idCalendario' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'collate' => NULL, 'comment' => ''),
+		'idUsuario' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'collate' => NULL, 'comment' => ''),
+		'descripcion' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 100, 'collate' => 'utf8_general_ci', 'comment' => '', 'charset' => 'utf8'),
+		'latitud' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 30, 'collate' => 'utf8_general_ci', 'comment' => '', 'charset' => 'utf8'),
+		'longitud' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 30, 'collate' => 'utf8_general_ci', 'comment' => '', 'charset' => 'utf8'),
+		'timestamp' => array('type' => 'timestamp', 'null' => false, 'default' => 'CURRENT_TIMESTAMP', 'collate' => NULL, 'comment' => ''),
+		'indexes' => array('PRIMARY' => array('column' => 'idDispositivo', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'MyISAM')
+	);
+
+/**
+ * Records
+ *
+ * @var array
+ */
+	public $records = array(
+		array(
+			'idDispositivo' => 1,
+			'idCalendario' => 1,
+			'idUsuario' => 1,
+			'descripcion' => 'Lorem ipsum dolor sit amet',
+			'latitud' => 'Lorem ipsum dolor sit amet',
+			'longitud' => 'Lorem ipsum dolor sit amet',
+			'timestamp' => 1335797382
+		),
+	);
+}

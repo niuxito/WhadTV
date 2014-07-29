@@ -1,0 +1,830 @@
+﻿/*! normalize.css v1.0.1 | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html,button,input,select,textarea{font-family:sans-serif}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}h2{font-size:1.5em;margin:.83em 0}h3{font-size:1.17em;margin:1em 0}h4{font-size:1em;margin:1.33em 0}h5{font-size:.83em;margin:1.67em 0}h6{font-size:.75em;margin:2.33em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}p,pre{margin:1em 0}code,kbd,pre,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}dl,menu,ol,ul{margin:1em 0}dd{margin:0 0 0 40px}menu,ol,ul{padding:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0;white-space:normal;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;*overflow:visible}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;*height:13px;*width:13px}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}form,th,td{margin:0;padding:0}
+
+.nm-ie8-bug {position: absolute; top: 0; left: 0; font-size: 1px; line-height: 1px; height: 1px}
+
+/* Smartphones (portrait and landscape) -- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+
+	body { min-width: 1024px }
+}
+/* iPads (portrait and landscape) -------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+
+	body { min-width: 1024px }
+}
+
+html, body {}
+body {margin: 0; padding: 0; background: #f0f0f0}
+body, table, input, select, textarea {font-family: Arial, Helvetica, sans-serif}
+body, table {font-size: 12px; line-height: 18px; color: #444}
+
+#contnr {position: relative; width: 100%; overflow: hidden}
+
+.wrap {position: relative; display: block; width: 100%; padding: 0; margin: 0 auto}
+.sub_wrap {position: relative; display: block; width: 100%}
+.wrap, .sub_wrap, .brd_bx, .inpt, h1, h2 {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box}
+
+
+a {text-decoration: none; color: #b74f19} a:hover {color: #016893} a:focus {outline: none}
+
+ol, ul, li {margin: 0; padding: 0; outline-style: none} li {list-style: none}
+
+.clear {clear: both}
+
+p.top, h1.top, h2.top, h3.top {margin-top: 0 !important; padding-top: 0 !important}
+p.btm, h1.btm, h2.btm, h3.btm {margin-bottom: 0 !important; padding-bottom: 0 !important}
+
+
+
+
+/*
+
+	## Variadors globals ##
+
+*/
+
+body.pg_login .wrap {width: 970px}
+
+
+
+/*
+
+	## Formularis ##
+
+*/
+
+.forms form {position: relative; display: inline-block; overflow: hidden; width: 100%}
+
+
+ .box_error {
+	border: 1px solid #d53535;  background: #ffaa5e url(../img/back_form_error_2.gif);
+	
+}
+ .box_error h2 {
+	margin: 0 0 5px 0; color: #981c04; font-weight: normal; text-shadow: 1px 1px 0 #ffede7; font-size: 20px; line-height: 28px;
+	background: url(../img/icons/ico_alert.png) 0 center no-repeat; padding-left: 35px
+}
+ .box_error p {font-size: 13px; line-height: 18px; margin: 0 0 10px 0; color: #220600}
+ .box_error p.last {margin-bottom: 0}
+
+
+ .box_info {border: 1px solid #9abbca; background: #d2eaf5 }
+ .box_info h2 {margin: 0 0 5px 0; color: #444; font-weight: normal; text-shadow: 1px 1px 0 #fff; font-size: 20px; line-height: 28px}
+ .box_info p {font-size: 13px; line-height: 18px; margin: 0 0 10px 0; color: #333}
+ .box_info p.last {margin-bottom: 0}
+
+ .box_error, .box_info {
+	position: relaitve; display: block; padding: 10px; margin: 10px 0 0 0;
+	-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+}
+
+
+.forms label {position: relative; display: inline-block; overflow: hidden; ;width: 100%; margin: 10px 0 0 0}
+.forms label.ini {}
+.forms label.left, .forms label.centr {float: left; width: auto; margin-right: 20px}
+.forms label.centr {margin-right: 0}
+.forms label.break {clear: right} .forms label.block {float: none; display: block}
+.forms label.right {float: right; width: auto; clear: right}
+.forms label.line  {width: auto; margin-right: 10px; white-space: nowrap}
+
+.forms label.mdm {width: 50%}
+.forms label.nbl {width: 25%}
+.forms label.min {width: 150px}
+
+.forms label h3, .forms .title, .colores_box  h3{
+	margin: 0; padding: 0 0 5px 0; color: #444; font-weight: normal; font-size: 12px; line-height: 18px; text-shadow: 1px 1px 0 #fff
+}
+.forms label.line h3 .forms label.line span.title {display: inline-block; padding: 3px}
+.forms label h3 .obl {display: inline-block; margin-left: 5px; color: #ff0000}
+
+.forms .inpt {
+	position: relative; display: block;
+	width: 100%; padding: 5px 10px; background: #fff; font-size: 12px; line-height: 18px; color: #444;
+	border: 1px solid #bbb; -moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px;
+}
+.forms .fmdm .inpt {width: 50%}
+.forms .fmin .inpt {width: 100px}
+
+.forms select.inpt, .forms label.left .inpt, .forms label.centr .inpt, .forms label.right .inpt {width: auto !important; min-width: 100px}
+
+.forms .inpt.mdm {width: 50%}
+.forms .inpt.nbl {width: 25%}
+.forms .inpt.min {width: 150px}
+
+.forms label.mdm .inpt, .forms label.nbl .inpt {width: 100% !important}
+
+.forms label.clndr .inpt {
+	padding-left: 22px; background: #fff url(../img/icons/ico_timer_mn.png) 5px center no-repeat; width: 130px !important
+}
+
+.forms label.alert h3, .forms label.alert .title {color: #d53535; font-weight: bold}
+.forms label.alert .inpt {border-color: #d53535}
+
+.forms label .inpt:focus {border-color: #ffbd00}
+
+.forms label span.inf {
+	position: relative; display: block; float: left; clear: both; margin: 5px 0 2px 0; padding: 3px 5px;
+	border: 1px solid #ddd; background: #f9f9f9; -moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+	font-size: 11px; line-height: 16px
+}
+.forms label span.inf a {font-weight: bold}
+.forms label span.inf .del {line-height: 0}
+.forms label span.inf .del img {
+	margin-left: 5px; width: 14px; height: 10px; vertical-align: middle; background: url(../img/icons/ico_del_tag.png)
+}
+
+.forms label.line input, .forms label.line select {display: inline-block}
+
+.forms .msg {
+	position: relative; float: left; margin-top: 25px; font-size: 11px; line-height: 18px; color: #666;
+	background: url(../img/form/back_msg_left.png) 0 0 no-repeat; padding-left: 15px
+}
+.forms .msg.blk {display: block; float: none}
+.forms .msg.btm {background: url(../img/form/back_msg_btm.png) 0 0 no-repeat; padding: 10px 0 0 0; margin: 5px 0 0}
+.forms .msg.mdl {width: 50%}
+.forms .msg.min {width: 25%}
+
+
+.forms.sep {padding-bottom: 15px; background: url(../img/form/back_sep.png) 0 bottom repeat-x; margin-bottom: 20px}
+.forms .sep {position: relative; overflow: hidden; width: 100%; height: 10px; background: url(../img/form/back_sep.png) 0 bottom repeat-x; margin: 20px 0}
+
+.forms .gnr_inf {position: absolute; left: 0; bottom: 25px; font-size: 10px; line-height: 16px; color: #888; text-shadow: 1px 1px 0 #fff}
+.forms .gnr_inf b {color: #d53535}
+
+
+.forms .box_btns {
+	position: relative; display: inline-block; overflow: hidden; width: 100%;
+	margin-top: 15px; border-top: 1px dotted #ccc; padding: 15px 0 5px
+}
+
+/**
+  *  Añadido por Alexis el 19/04/2013
+  *
+  **/
+#footer .forms .btn.up{
+	float:none;
+	margin: 0;
+
+}
+
+#footer .forms label{
+	width: 80%;
+	margin: 0;
+}
+#footer .forms .inpt{
+	width: 100%;
+}
+
+/**
+  * Fin del añadido 19/04/2013
+  *
+  **/
+
+.forms .btn, .box_btns .btn, a.lbtn, .box_ops h1 a.btn.up {
+	position: relative; float: right; width: auto !important; padding: 5px 8px; margin: 4px 0 0 10px; cursor: pointer;
+	font-size: 12px; line-height: 12px; text-align: center; color: #fff; text-shadow: -1px -1px 0 #000;
+	border: 1px solid #444; background: #555; -moz-border-radius: 4px; border-radius: 4px; -webkit-border-radius: 4px;
+	-moz-box-shadow: 0 0 5px #aaa; -webkit-box-shadow: 0 0 5px #aaa; box-shadow: 0 0 5px #aaa; vertical-align: middle
+}
+a.lbtn {float: none; display: inline-block; margin: 4px 10px 4px 0}
+.forms .btn.up, a.lbtn.up, .box_btns .btn.up, .box_ops h1 a.btn.up {
+	font-size: 16px; line-height: 16px; background: #d76323; border-color: #c55216; text-shadow: -1px -1px 0 #bd4807;
+	margin-top: 0; padding: 7px 15px;
+}
+.box_btns .btn.up, .box_ops h1 a.btn.up {padding: 7px 10px}
+.forms .btn.dwn, a.lbtn.dwn {
+	padding: 3px 5px; background: #999; border-color: #888; text-shadow: -1px -1px 0 #666;
+}
+.forms .btn.st_updt, .box_btns .btn.st_updt, a.lbtn.st_updt {
+	background: #555 url(../img/icons/ico_refresh_w_m.png) 5px center no-repeat; padding-left: 25px;
+}
+.forms .btn.up.st_updt, .box_btns .btn.up.st_updt, a.lbtn.up.st_updt {
+	background: #d76323 url(../img/icons/ico_refresh_w.png) 5px center no-repeat; padding-left: 35px;
+}
+.forms .btn:hover, .box_btns .btn:hover, a.lbtn:hover, .box_ops h1 a.btn.up:hover {
+	background-color: #e96521; border: 1px solid #c55216;
+	-moz-text-shadow: -1px -1px 0 #cf4f0d; text-shadow: -1px -1px 0 #cf4f0d; -webkit-text-shadow: -1px -1px 0 #cf4f0d;
+	-moz-box-shadow: 0 0 5px #ff7e00; -webkit-box-shadow: 0 0 5px #ff7e00; box-shadow: 0 0 5px #ff7e00;
+}
+
+
+
+
+
+
+
+/*
+
+	## Cap�alera ##
+
+*/
+
+#head {
+	z-index: 100; position: fixed; top: 0; left: 0; width: 100%; height: 90px; margin: 0 auto;
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	background: #ddd; border-bottom: 1px solid #ccc;
+	box-shadow: 0 0 10px -7px #000; -moz-box-shadow: 0 0 10px -7px #000; -webkit-box-shadow: 0 0 10px -4px #000;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=180, Color='#555555');
+}
+body.pg_login #head {height: 55px}
+
+	#head .wrap {height: 100%}
+
+	#logo {position: absolute; top: 6px; left: 20px}
+	body.pg_login #logo {left: 0}
+
+	#clam {position: absolute; top: 40px; left: 86px; width: 150px; font-size: 9px; line-height: 9px; text-align: right; color: #999}
+	body.pg_login #clam {left: 66px}
+
+
+	/* menu usuari */
+
+	#menu {
+		position: absolute; overflow: hidden; right: 20px; top: 0; height: 30px; white-space: nowrap; text-align: right;
+		-moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px; -webkit-border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomright: 5px; border-bottom-right-radius: 5px; -webkit-border-bottom-right-radius: 5px;
+	}
+	body.pg_login #menu {right: 0}
+
+	#menu .ini, #menu .ini a {
+        -moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px; -webkit-border-bottom-left-radius: 5px;
+	}
+	#menu li {float: left; font-size: 12px; line-height: 18px}
+	#menu li.txt {padding: 6px 10px; background: #eee; color: #666; text-shadow: 1px 1px 0 #fff}
+    #menu li.txt strong {color: #111}
+
+	#menu img {vertical-align: -4px}
+
+    #menu a {
+		display: block; overflow: hidden; color: #faf6f4; background: #e48757; text-shadow: -1px -1px 0 #d37241; font-weight: bold;
+		padding: 6px 10px
+	}
+	#menu .lgut a {
+		text-shadow: -1px -1px 0 #666; background:  #888 url(../img/icons/ico_logout.png) 8px 5px no-repeat; padding-left: 28px
+	}
+	#menu a:hover {background-color: #5db7cd; color: #fff; text-shadow: -1px -1px 0 #3d91a5}
+
+	#menu .txt a {display: inline; color: #b74f19; background: transparent; text-shadow: 1px 1px 0 #fff; padding: 0}
+	#menu .txt a:hover {color: #016893}
+
+	#menu a.usr {background: url(../img/icons/ico_settings_usr.png) right center no-repeat; padding-right: 20px}
+
+	#menu .special {background: #e6700f}
+
+    #menu .lnk a.s_up {background: #70c3db}
+	#menu .lnk a.s_up:hover {background: #fff; color: #000}
+
+    #menu li.fnl, #menu .fnl a {
+		-moz-border-radius-bottomright: 5px; border-bottom-right-radius: 5px; -webkit-border-bottom-right-radius: 5px;
+	}
+
+
+
+	/* menu general */
+
+	#smenu {position: absolute; overflow: hidden; left: 0; bottom: 0; width: 100%; background: #b74f19}
+
+	#smenu ul {margin-left: 20px}
+	#smenu li {float: left; font-size: 12px; line-height: 18px}
+	#smenu li a {
+		display: block; overflow: hidden; color: #fff; text-shadow: -1px -1px 0 #933c0f; font-weight: bold; padding: 8px 10px;
+		border-right: 1px solid #933c0f;
+	}
+	#smenu li.ini a {border-left: 1px solid #933c0f}
+
+	#smenu li a:hover {background: #d05e23; text-shadow: -1px -1px 0 #bf541c}
+
+	#smenu li.up a {background: #983f10; text-shadow: -1px -1px 0 #81340c}
+
+	/* empresa */
+
+		#emprs {position: absolute; overflow: hidden; top: 0; right: 20px; height: 100%}
+		#emprs h1 {
+			position: relative; float: left; overflow: hidden; margin: 0; padding: 8px; border-left: 1px solid #933c0f;
+			color: #fff; font-size: 14px; line-height: 18px; text-shadow: -1px -1px 0 #933c0f;
+		}
+		#emprs .ops {position: relative; float: right; overflow: hidden}
+		#emprs .ops .fld {
+			position: relative; overflow: hidden; float: right; height: 30px; padding: 4px 5px; border-right: 1px solid #933c0f
+		}
+		#emprs .ops .fld.icon {padding: 3px 4px}
+		#emprs .ops .fld.icon a {display: block; line-height: 0}
+		#emprs .ops .fld.icon img {
+			padding-top: 7px; width: 21px; height: 21px; background: url(../img/icons/ico_config_w.png) center center no-repeat
+		}
+		#emprs .ops .fld.st_chg img {background-image: url(../img/icons/ico_refresh_w.png)}
+
+		#emprs .ops .fld:hover {background-color: #d05e23}
+		#emprs .ops .fld.up {background-color: #1699a3}
+
+
+
+
+/*
+
+	## Cos ##
+
+
+*/
+
+#contnt {
+	z-index: 3; position: relative; overflow: hidden; width: 100%; margin: 0 auto;
+	padding-top: 90px; min-height: 200px; height: auto !important; height: 200px; _height: 100%;
+}
+body.pg_login #contnt {padding-top: 60px}
+
+#contnt .wrap {padding: 0 20px}
+body.pg_login #contnt .wrap {padding: 0}
+
+
+
+/*
+
+	## Títols i opcions destacades ##
+
+*/
+
+	.box_ops {position: relative; display: inline-block; border-bottom: 1px dotted #bbb; width: 100%}
+	.box_ops h1 {
+		width: 100%; font-size: 20px; line-height: 24px; font-weight: normal; color: #666; text-shadow: 1px 1px 0 #fff;
+		margin: 0; padding: 10px 0;
+	}
+	.box_ops.st_empr h1 {background: url(../img/icons/ico_tit_dtll.png) 0 center no-repeat; padding-left: 18px}
+	.box_ops.st_disp h1 {background: url(../img/icons/ico_pantalla.png) 0 center no-repeat; padding-left: 30px}
+	.box_ops.st_edit h1 {background: url(../img/icons/ico_edit_titl.png) 0 center no-repeat; padding-left: 30px}
+	.box_ops.st_list h1, .box_ops h1 .st_list {background: url(../img/icons/ico_list_titl.png) 0 center no-repeat; padding-left: 25px}
+
+	.box_ops h1 a {padding-right: 18px; background: url(../img/icons/ico_tit_dtll.png) right center no-repeat; color: #999}
+	.box_ops h1 a:hover {color: #b74f19}
+	.box_ops h1 a.btn.up{float:none}
+	.box_ops .ops {position: absolute; top: 8px; right: 0}
+	.box_ops .ops .fld {
+		position: relaitve; overflow: hidden; float: right; padding: 4px 5px; margin-left: 5px;
+		border: 1px solid #fff; border-top: 1px solid #ddd; border-left: 1px solid #ddd; background: #e9e9e9;
+		-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+	}
+	.box_ops .ops .fld.st_chg {padding-left: 25px; background: #e9e9e9 url(../img/icons/ico_refresh_h12.png) 5px center no-repeat}
+	.box_ops .ops .fld.icon {padding: 3px 4px}
+	.box_ops .ops .fld.icon a {display: block; line-height: 0}
+	.box_ops .ops .fld.icon img {width: 21px; height: 21px; background: url(../img/icons/ico_config.png) center center no-repeat}
+	.box_ops .ops .fld.st_cancel img {background-image: url(../img/icons/ico_delete.png)}
+	.box_ops .ops .fld.st_add img {background-image: url(../img/icons/ico_add.png)}
+
+	.box_ops .ops .fld .ind {color: #999; font-style: italic}
+	.box_ops .ops .fld:hover {background-color: #fff5cd}
+	.box_ops .ops .fld:hover select {border: 1px solid #ccc}
+
+	.msg_inf {position: relative; overflow: hidden; width: 750px; margin: 0 auto; padding: 30px 0; color: #666}
+	.msg_inf h1, .msg_inf h2 {font-size: 22px; line-height: 28px; text-shadow: 1px 1px 0 #fff; margin: 0 0 15px}
+	.msg_inf p {margin: 0; padding: 0 0 15px 0}
+	.msg_inf, .msg_inf p {font-size: 16px; line-height: 22px}
+
+
+
+/*
+
+	## Pestanyes ##
+
+*/
+
+.pest {position: relative; display: inline-block; border-bottom: 2px solid #999; width: 100%}
+.pest li {float: left;}
+.pest a {
+	display: inline-block; padding: 5px 8px; background: #D76323; color: #fff; font-weight: bold; margin-right: 5px;
+	-moz-text-shadow: -1px -1px 0 #cf4f0d; text-shadow: -1px -1px 0 #cf4f0d; -webkit-text-shadow: -1px -1px 0 #cf4f0d;
+}
+.pest a:hover {
+	background: #e96521;
+	-moz-text-shadow: -1px -1px 0 #bd4807; text-shadow: -1px -1px 0 #bd4807; -webkit-text-shadow: -1px -1px 0 #bd4807;
+}
+.pest li.up a {background: #999; color: #fff; text-shadow: -1px -1px 0 #666;
+	-moz-text-shadow: 0 0 0 0; text-shadow: 0 0 0 0; -webkit-text-shadow: 0 0 0 0;
+}
+
+/*
+
+	## Llistats ##
+
+*/
+
+.list .elm_mov, .list, .list .elm, .list .elm a, .list .elm span.prv, .list .ops, .mlist li .ops, .vlist, .forms .info {
+	position: relative; display: inline-block; width: 100%
+}
+
+.list {margin: 10px 0} .list.check, .mlist.check {margin-top: 0}
+
+.list .elm_mov {
+    z-index: 1; float: left; width: 192px; height: 184px;
+}
+
+.list .elm, .vlist .elm, .forms .info {
+	z-index: 1; float: left; width: 160px; height: 152px; margin: 5px; padding: 10px; background: #f8f8f8; border: 1px solid #ddd;
+	-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+}
+.vlist .elm { height: 130px}
+
+.list .elm a.prv, .list .elm a.dsp, .list .elm a.lbr, .list .elm a.lst, .vlist .elm a.prv, .vlist .elm b.prv, .list .elm span.prv {
+	height: 128px; color: #666; font-size: 11px; line-height: 14px; text-shadow: 1px 1px 0 #fff;
+}
+.vlist .elm b.prv {font-weight: normal}
+.list .elm a.prv u, .list .elm a.dsp u, .list .elm a.lbr u, .list .elm a.lst u, .vlist .elm a.prv u, .vlist .elm b.prv u {
+	display: inline-block; background: #999; color: #fff; text-decoration: none; text-shadow: -1px -1px 0 #777;
+	font-size: 10px; line-height: 10px; white-space: nowrap; padding: 2px 3px 1px;
+	-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px; 
+}
+.list .elm a.prv img, .list .elm a.dsp img, .list .elm a.lst img, .vlist .elm a.prv img, .elm div.prv img, .vlist .elm b.prv img {width: 160px; height: 90px}
+.list .elm.add a img {width: auto; height: auto}
+.list .elm a.prv:hover, .list .elm a.dsp:hover, .list .elm a.lbr:hover, .list .elm a.lst:hover, .vlist .elm a.prv:hover {color: #b74f19}
+.list .elm a.prv:hover img, .vlist .elm a.prv:hover img {
+	-moz-box-shadow: 0 0 5px 0 #ffbd00; -webkit-box-shadow: 0 0 5px 0 #ffbd00; box-shadow: 0 0 5px 0 #ffbd00;
+}
+.list .elm a.dsp, .list .elm a.lbr, .list .elm a.lst, .list .elm.add a  {text-align: center}
+.list .elm a.dsp img {background: url(../img/icons/ico_pantalla_list.png) center bottom no-repeat}
+.list .elm a.lst img {background: url(../img/icons/ico_list_g.png) center bottom no-repeat}
+
+.list .elm.red {background: #d76323; border-color: #c55216}
+.list .elm.red a.lbr {color: #fff; text-shadow: -1px -1px 0 #a3410c}
+.list .elm.red a.lbr:hover {color: #000; text-shadow: 1px 1px 0 #ef8245}
+
+.list .elm.msg.long, .forms .info {
+	float: none; width: 100%; height: auto; margin: 0 0 5px;
+	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box
+}
+.list .elm.msg.info, .forms .info {
+    background-image: url(../img/icons/ico_info.png); background-position: 10px 10px; background-repeat: no-repeat; padding-left: 50px
+}
+
+.forms .info {margin-top: 10px}
+
+.list.check, .mlist.check input {display: inline-block; float: left; margin: 7px 10px 0 5px;}
+.list.check, .mlist.check a.titl {border-left: 1px dotted #ccc}
+
+
+
+/* opcions */
+
+.list .ops {border-top: 1px dotted #ccc; padding-top: 5px}
+.mlist li .ops {float: right; width: auto}
+
+.list .ops .btn, .mlist li .btn, .list .alrts .btn {
+	display: inline-block; float: left; width: auto; margin-right: 5px; border: 1px solid #ddd; line-height: 0;
+	-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px;
+}
+.list .ops .btn img, .mlist li .btn img, .list .alrts .btn img {
+	width: 20px; height: 20px; background: url(../img/icons/ico_play.png) center center no-repeat;
+	-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px;
+}
+.list .ops span.ico, .mlist .ops span.ico, .list .ops span.ico {
+	display: inline-block; float: left; width: auto; margin-right: 5px; line-height: 1px
+}
+
+/* alertes */
+
+.list .alrts {position: absolute; top: 10px; right: 10px}
+.list .alrts .btn {
+	margin: 0 0 0 5px; float: right; background: #fff; border-color: #ccc;
+	-moz-box-shadow: 0 0 5px -3px #000; -webkit-box-shadow: 0 0 5px -3px #000; box-shadow: 0 0 5px -3px #000;
+}
+.list .alrts .btn img {width: 32px; height: 32px}
+.list .alrts .btn.st_rfsh img {background-image: url(../img/icons/ico_refresh_r_h22.png)}
+.list .alrts .btn.st_rfsh.anim {border-color: #FF9900}
+.list .alrts .btn.st_rfsh.anim img {background-image: url(../img/icons/ico_refresh_anim_h22.gif)}
+
+.list .alrts .num, .list .alrts.st_mov {
+	width: auto; display: inline-block; border: 1px solid #fff; background: #ddd; padding: 2px 6px; margin: -5px -5px auto auto;
+	font-size: 16px; line-height: 16px; color: #444; text-shadow: 1px 1px 0 #fff; cursor: pointer;
+	-moz-border-radius: 15px; border-radius: 15px; -webkit-border-radius: 15px;
+	-moz-box-shadow: 0 0 5px -2px #000; -webkit-box-shadow: 0 0 5px -2px #000; box-shadow: 0 0 5px -2px #000;
+}
+.list .alrts.st_mov {width: 14px; height: 18px; background: #ddd url(../img/icons/ico_move_2.png) center center no-repeat}
+
+.list .alrts .num:hover, .list .elm.move .alrts .num, .list .alrts.st_mov:hover, .list .elm.move .alrts.st_mov {
+	background-color: #f0d171; color: #3b331f
+}
+
+
+/* variacions */
+
+.list .ops .btn.st_stop img, .mlist li .btn.st_stop img {background-image: url(../img/icons/ico_stop_red.png)}
+.list .ops .btn.st_disp img, .mlist li .btn.st_disp img {background-image: url(../img/icons/ico_disp_min.png)}
+.list .ops .btn.st_list img, .mlist li .btn.st_list img {background-image: url(../img/icons/ico_list.png)}
+.list .ops .btn.st_vido img, .mlist li .btn.st_vido img {background-image: url(../img/icons/ico_film.png)}
+.list .ops .btn.st_delt img, .mlist li .btn.st_delt img {background-image: url(../img/icons/ico_brossa.png)}
+.list .ops .btn.st_sond img, .mlist li .btn.st_sond img {background-image: url(../img/icons/ico_audio_on.png)}
+.list .ops .btn.st_sonf img, .mlist li .btn.st_sonf img {background-image: url(../img/icons/ico_audio_off.png)}
+.list .ops .btn.st_user img, .mlist li .btn.st_user img {background-image: url(../img/icons/ico_user.png)}
+.list .ops .btn.st_emp img, .mlist li .btn.st_emp img {background-image: url(../img/icons/ico_empresa_min.png)}
+.list .ops .btn.st_del img, .mlist li .btn.st_del img {background-image: url(../img/icons/ico_delete_red.png)}
+.list .ops .btn.st_add_g img, .mlist li .btn.st_add_g img {background-image: url(../img/icons/ico_add_green.png)}
+.list .ops .btn.st_usu img, .mlist li .btn.st_usu img {background-image: url(../img/icons/ico_user.png)}
+.list .ops .btn.st_proc img, .mlist li .btn.st_proc img {background-image: url(../img/icons/ico_modif_min.png)}
+.list .ops .btn.st_rfsh img, .mlist li .btn.st_rfsh img {background-image: url(../img/icons/ico_refresh.png)}
+.list .ops .btn.st_msg img, .mlist li .btn.st_msg img {background-image: url(../img/icons/ico_comms_min.png)}
+
+.list .ops .btn:hover, .mlist li .btn:hover, .list .alrts .btn:hover {border-color: #ffbd00; background-color: #fff9e9}
+
+.list .ops span.ico img, .mlist .ops span.ico img {
+    height: 20px; width: 20px; margin-top: 5px; background: url(../img/icons/ico_refresh.png) center center no-repeat;
+}
+
+.list .ops .inf, .mlist li .inf, .list .ops .stat, .mlist .ops .stat {
+	display: inline-block; float: left; margin-right: 5px; padding: 2px 4px; font-size: 10px; line-height: 10px; color: #333;
+	background: #ddd; -moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+}
+.list .ops .stat, .mlist .ops .stat {padding: 6px}
+
+.list .ops .inf.alrt, .mlist li .inf.alrt {background: #d34848; color: #fff}
+
+.list .ops .btn.st_delt, .mlist li .ops {float: right; margin: 0}
+
+.mlist.grn {}
+.mlist.grn ul>li {padding: 10px 0}
+.mlist.grn ul>li.inact {background-color: #ddd}
+.mlist.grn ul>li.inact .inf {background-color: #ededed}
+
+
+
+/* control % consum */
+
+.list .elm .usge {position: absolute; top: 20px; left: 50%; width: 100px; margin-left: -50px}
+.list .elm .usge b {
+	display: inline-box; width: 100%; font-size: 20px; line-height: 28px; color: #eee; font-style: italic;
+	text-shadow: 0 0 5px #000;
+}
+.list .elm .usge b i {font-size: 60%}
+.list .elm .usge .barr {
+	position: relative; display: block; overflow: hidden; width: 80%; height: 5px; background: #000; border: 1px solid #777;
+	-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px; margin: 0 auto;
+	-moz-box-shadow: 0 0 5px #000; -webkit-box-shadow: 0 0 5px #000; box-shadow: 0 0 5px #000;
+}
+.list .elm .usge .barr .prct {
+	position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #FF6600;
+	-moz-border-radius: 2px; border-radius: 2px; -webkit-border-radius: 2px;
+	-moz-box-shadow: inset 0 0 2px #FFCC00; -webkit-box-shadow: inset 0 0 2px #FFCC00; box-shadow: inset 0 0 2px #FFCC00;
+}
+.list .elm .usge.red .barr .prct {
+	background: #ff0000;
+	-moz-box-shadow: inset 0 0 2px #FF9900; -webkit-box-shadow: inset 0 0 2px #FF9900; box-shadow: inset 0 0 2px #FF9900;
+}
+
+.list .elm p.prc {color: #888}
+.list .elm p.prc b {font-size: 18px; line-height: 18px}
+
+/* estat moure */
+
+/*.list .elm_mov.move, .box_pop .elm.move {z-index: 10000; position: fixed; top: 50%; left: 50%}*/
+
+.list .elm_mov.move .elm, .box_pop .elm.move {
+	 background: url(../img/back_form_lock.gif);
+	-moz-box-shadow: 3px 5px 10px #000; -webkit-box-shadow: 3px 5px 10px #000; box-shadow: 3px 5px 10px #000;
+}
+
+
+
+
+/*
+
+	## Llistes ##
+
+*/
+
+.box_list, .box_pop, .mlist {position: relative; overflow: hidden; width: 100%}
+.box_pop {margin: 20px 0}
+.box_pop.noSpTp {margin-top: 0}
+
+.box_pop h2 {font-size: 14px; line-height: 20px; color: #555; text-shadow: 1px 1px 0 #fff}
+.box_pop h2 b {font-size: 18px; line-height: 24px;}
+.box_pop h2 img {position: relative; float: left; overflow: hidden; width: 80px; margin: 0 10px 10px 0}
+
+.mlist {}
+.mlist ul>li {
+	position: relative; overflow: hidden; border-bottom: 1px dotted #ccc; background-color: #ededed; font-size: 16px; line-height: 20px;
+	padding: 2px 0
+}
+.mlist ul>li.ini {border-top: 1px dotted #ccc}
+.mlist ul>li.imp {background-color: #e9e9e9}
+.mlist ul>li .titl {
+	position: relative; float: left; display: block; font-weight: bold; text-shadow: 1px 1px 0 #fff;
+	padding: 4px 0 4px 30px; background: url(../img/icons/ico_list.png) 10px center no-repeat;
+}
+.st_disp .mlist ul>li .titl {background-image: url(../img/icons/ico_disp_min.png)}
+.st_emp .mlist ul>li .titl {background-image: url(../img/icons/ico_tit_dtll.png)}
+
+.mlist li .btn {margin-top: 3px !important}
+
+.box_pop .box_btns {position: relative; overflow: hidden; padding: 10px 10px 0 0}
+
+.mlist ol>li {display: inline-block; width: 60px} .mlist ol>li.min {width: 25px}
+.mlist li .inf {margin-top: 3px}
+
+
+/* llistes especials */
+
+#contnt.box_part_add .wrap {padding: 0}
+#contnt.box_part_add .sub_wrap {
+	position: absolute; top: 0; left: 0; overflow: auto; overflow-x: hidden; width: 100%; bottom: 201px; padding: 0 20px
+}
+
+#contnt.box_part_add .list {overflow: auto}
+
+.box_adds {position: absolute; display: none; overflow: auto; bottom: 0; left: 0; width: 100%; height: 200px; background: #fff}
+.box_adds .bx_head {
+	position: relative; width: 100%; height: 20px; background: #ddd; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;
+}
+.box_adds .bx_head h4 {
+	padding: 4px 0 0 20px; margin: 0 0 0 15px; font-size: 11px; line-height: 11px; height: 16px; color: #444; font-weight: normal;
+	background: url(../img/icons/ico_detall_up.png) 0 center no-repeat;
+}
+.box_adds .bx_head .bx_close {
+	position: absolute; top: 0; right: 0; line-height: 0; width: 30px; height: 20px; cursor: pointer;
+	background: url(../img/icons/ico_delete.png) center center no-repeat;
+}
+.box_adds .bx_head .bx_close:hover {background-color: #fff}
+
+.box_adds .bx_cntnt {
+	position: relative; width: 100%; height: 178px; overflow: auto;
+	background: #fff url(../img/loader.gif) center center no-repeat;
+}
+.box_adds .box_pop {position: absolute; top: 0; left: 0; margin: 0; width: 20000px; height: 158px; background: #fff}
+.box_adds .box_pop .vlist {position: absolute; top: 0; left: 0; overflow: hidden; width: auto; height: 158px}
+
+.box_adds .box_pop .vlist .elm {cursor: pointer}
+.box_adds .box_pop .vlist .elm:hover {border-color: #d6aa94; background-color: #fef7f4}
+
+
+
+
+
+/* banner de protada */
+
+#bnrPrtd {position: relative; display: block; width: 970px; height: 318px}
+
+/* slider */
+
+#contnt .slider-wrapper {z-index: 1; width:100%; margin: 0; padding: 0; background: transparent}
+#contnt #slider {box-shadow: 0 0 10px -5px #000; -moz-box-shadow: 0 0 10px -5px #000; -webkit-box-shadow: 0 0 10px -2px #000}
+#contnt .nivo-controlNav {text-align: center}
+#contnt .nivo-prevNav, #contnt .nivo-nextNav {bottom: -30px}
+#contnt .nivo-directionNav a:hover {background-color: #b8d0e2}
+
+#bnrPrtd .btReg {z-index: 10000; position: absolute; overflow: hidden; bottom: 35px; right: 10px}
+#bnrPrtd .btReg a {
+	font-size: 18px; display: inline-block; color: #fff; text-shadow: -1px -1px 0 #994e11;
+	background: #ce5e03; border: 1px solid #e07f2f; padding: 10px 15px; margin: 8px;
+	-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0 0 10px -3px #000; -webkit-box-shadow: 0 0 10px -5px #000; box-shadow: 0 0 10px -3px #000;
+}
+#bnrPrtd .btReg a:hover {
+	color: #fff; background: #5db7cd; border: 1px solid #e9f7fb; text-shadow: -1px -1px 0 #3f98ae;
+	-moz-box-shadow: 0 0 10px #c4f0fb; -webkit-box-shadow: 0 0 10px #c4f0fb; box-shadow: 0 0 10px #c4f0fb;
+}
+
+
+
+
+
+
+/* login */
+
+#box_login form {
+	position: relative; width: auto; margin: 0; padding: 0; color: #666; text-shadow: 1px 1px 0 #fff; padding-top: 20px;
+}
+
+#box_login fieldset {border: 0; text-align: center}
+#box_login .btncnt{display: inline-block; text-align: left}
+#box_login .btncnt .register{float: left; clear: both; margin: 0 0px 0 10px; padding: 0;}
+
+#box_login label {display: inline-block; vertical-align: top; text-align: left; *width: 180px}
+#box_login label.passw {display: inline-block; margin-left: 5px}
+#box_login label .titl {display: inline-block}
+#box_login label .lnk {position: relative; clear: both; float: right; width: 155px; font-size: 10px; font-weight: normal; margin-right: 2px}
+#box_login label.passw .lnk {background: url(../img/ico_lat.gif) 0 center no-repeat; padding-left: 10px}
+
+#box_login input {
+	border: 1px solid #aaa; background: #fff; color: #555; width: 150px; padding: 6px 8px;
+    -moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px;
+    -moz-box-shadow: 0 0 5px #bbb; -webkit-box-shadow: 0 0 5px #bbb; box-shadow: 0 0 5px #bbb;
+}
+#box_login input:focus {
+	background: #fff; border-color: #FFCC00; -moz-box-shadow: 0 0 5px #ccc; -webkit-box-shadow: 0 0 5px #ccc; box-shadow: 0 0 5px #ccc;
+}
+
+#box_login #chk_rem {vertical-align: middle; width: auto; background: transparent; padding: 0; border: 0; margin: -2px 5px 0 0}
+
+label[for=chk_rem] {padding-top: 5px}
+
+#box_login .button, #box_login .button:focus {
+	color: #fff; width: 104px; font-size: 14px; line-height: 14px; 
+	vertical-align: middle; background: #d76323; border: 1px solid #c55216; padding: 6px 0; margin: 0 20px 0 10px;
+	-moz-text-shadow: -1px -1px 0 #bd4807; text-shadow: -1px -1px 0 #bd4807; -webkit-text-shadow: -1px -1px 0 #bd4807;
+	-moz-border-radius: 3px; border-radius: 3px; -webkit-border-radius: 3px;
+	-moz-box-shadow: 0 0 5px #aaa; -webkit-box-shadow: 0 0 5px #aaa; box-shadow: 0 0 5px #aaa;
+	float:left;
+}
+#box_login .button:hover {
+	background: #e96521; border: 1px solid #c55216;
+	-moz-text-shadow: -1px -1px 0 #cf4f0d; text-shadow: -1px -1px 0 #cf4f0d; -webkit-text-shadow: -1px -1px 0 #cf4f0d;
+	-moz-box-shadow: 0 0 5px #ff7e00; -webkit-box-shadow: 0 0 5px #ff7e00; box-shadow: 0 0 5px #ff7e00;
+}
+
+#box_login .ferror {position: relative; overflow: hidden; padding: 0; margin: 0 auto 20px; width: 100%; text-align: center}
+#box_login .ferror .text {
+ 	display: inline-block; background: url(../img/form/ico_error_mn.png) 0 center no-repeat; padding-left: 20px;
+	color: #b74f1a; font-weight: bold; text-shadow: 1px 1px 0 #fff
+}
+
+
+
+
+/*
+
+	## Tancament ##
+
+
+*/
+
+#footer {
+	position: relative; overflow: hidden; width: 100%; padding: 10px 0 15px; margin-top: 20px;
+	background: #ddd; border-top: 1px solid #ccc;
+	box-shadow: 0 0 10px -8px #000; -moz-box-shadow: 0 0 10px -8px #000; -webkit-box-shadow: 0 0 10px -6px #000;
+}
+/*body.pg_login #footer {padding: 10px 0 15px}*/
+
+#footer.noSep {margin-top: 0}
+
+#footer .wrap {}
+
+#footer .left, #footer .right {position: relative; float: left; display: inline-block; padding-left: 20px; width: 45%}
+body.pg_login #footer .left {left: 0; padding: 0}
+#footer .right {float: right}
+
+#footer ul {position: relaitve; float: right; overflow: hidden}
+#footer .left ul {float: left}
+#footer li {
+	position: relative; float: left; margin: 0 0 0 5px; padding: 0 0 0 5px; border-left: 1px solid #aaa; text-shadow: 1px 1px 0 #fff;
+}
+#footer li.ini {margin: 0; border: 0}
+#footer li.up a {color: #ffe17a}
+
+
+/*
+
+	Especials
+
+*/
+
+
+#subWin, #subWin .shadow {/*display: none; */position: fixed; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden}
+#subWin {z-index: 20000}
+#subWin .shadow {background: url(../img/back_ng.png); }
+
+#subWin .windw {
+	position: absolute; overflow:hidden; top: 50%; left: 50%; width: 600px; height: 300px; margin-left: -300px; margin-top: -150px;
+	background: #eee; padding: 15px;
+}
+#subWin .windw h2 {
+	position: relative; overflow: hidden; margin: 0; padding: 0 0 5px 0; border-bottom: 1px solid #ddd;
+	color: #555; text-shadow: 1px 1px 0 #fff; font-weight: normal; font-size: 13px; line-height: 16px;
+}
+#subWin .windw .cls {
+	position: absolute; top: 10px; right: 10px; line-height: 0; width: 22px; height: 22px; cursor: pointer;
+	-moz-border-radius: 5px; border-radius: 5px; -webkit-border-radius: 5px;
+	background: url(../img/icons/ico_delete.png) center center no-repeat;
+}
+#subWin .windw .cls:hover {
+	background-color: #fff; box-shadow: 0 0 10px 0 #fff; -moz-box-shadow: 0 0 10px 0 #fff; -webkit-box-shadow: 0 0 10px 0 #fff;
+}
+	#subWInfo {position: absolute; overflow: auto; top: 38px; left: 15px; right: 15px; bottom: 15px}
+	#subWInfo iframe {position: absolute; overflow: auto; top: 0; left: 0; width: 100%; height: 100%}
+
+
+
+
+canvas{
+	border: solid 1px;
+	width: 250px;
+	height: 200px;
+	margin: 10px;
+	float: left;
+}
+
+.cartel #colorsContainer{
+	width: 55%; float:left;
+}
+.cartel form{ min-height: 290px;}
+
+.cartel label{ display: inline; margin: 10px;}
+
+.color_elm{
+	width: 50%; float:left;
+}
+
+
+
+
+
+

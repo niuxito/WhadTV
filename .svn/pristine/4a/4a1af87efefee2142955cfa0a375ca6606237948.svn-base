@@ -1,0 +1,21 @@
+<?php
+App::uses('AppModel', 'Model');
+/**
+ * Video Model
+ *
+ */
+class Video extends AppModel {
+/**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+	public $useTable = 'video';
+/**
+ * Primary key field
+ *
+ * @var string
+ */
+	public $primaryKey = 'idVideo';
+	
+}
