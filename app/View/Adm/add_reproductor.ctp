@@ -11,10 +11,6 @@
 		<h3>Descripción</h3>
 		<?php echo $this->Form->input('descripcion', array('class'=>'inpt', 'label'=>false, 'type'=>'text')); ?>
 	</label>
-	<!--<label for="idEmpresa" class="fld fmdm ini">
-		<h3>Empresa</h3> 
-		<?php echo $this->Form->input('idEmpresa', array('class'=>'inpt', 'label'=>false, 'type'=>'text')); ?>
-	</label>-->
 	<label for="idEmpresa" class="fld fmdm ini">
 		<h3>Empresa</h3>
 		<select size="1" name="data[Dispositivo][idEmpresa]">
@@ -31,7 +27,6 @@
 </div>
 
 <div class="box_btns">
-	<!--<h3><?php echo __('Acciones'); ?></h3>-->
 	<ul>
 		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'listadoDispositivos'), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
 	</ul>
