@@ -1747,17 +1747,20 @@ class AdmController extends AppController{
 	}
 	
 	public function situacionConsejo($idConsejo = null){
+		
 		$this->loadModel('Consejo');
 		$this->Consejo->id = $idConsejo;
-		$this->request->data = $this->Consejo->read(null,$idConsejo);//$consejosC->Consejo->read(null,$idConsejo);
+		$this->request->data = $this->Consejo->read(null,$idConsejo);
 		$situacion = $this->request->data['Consejo']['situacion'];
-		$nsituacion = 1;
-		If ($situacion == 0) {
-			$nsituacion = 1;
+		CakeLog::write("debug", "Cambiando situacion de consejo:".$situacion);
+		
+		if ($situacion == "leido") {
+			$situacion = "noleido";
 		}else{
-			$nsituacion = 0;	
+			$situacion = "leido";	
 		}
-		$this->request->data['Consejo']['situacion'] = $nsituacion;
+		CakeLog::write("debug", "Nueva sutuación:".$situacion);
+		$this->request->data['Consejo']['situacion'] = $situacion;
 		if ($this->Consejo->save($this->request->data)) {
 			$this->Session->setFlash(__('La situacion ha sido actualizada.'), 'info');
 		} else {
