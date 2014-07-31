@@ -1,4 +1,4 @@
-<link href="http://whadtv.com/css/mail.css?v=1" rel="stylesheet" type="text/css" />
+<link href="https://whadtv.com/css/mail.css?v=1" rel="stylesheet" type="text/css" />
 <a name="top" class="nm-ie8-bug">&nbsp;</a>
 
 <div id="contnr">
@@ -11,7 +11,7 @@
 
 <div class="wrap">
 
-<div id="logo"><a href="http://whadtv.com"><img class="png" src="http://whadtv.com/img/logo_whadtv_2.png" /></a></div>
+<div id="logo"><a href="https://whadtv.com"><img class="png" src="https://whadtv.com/img/logo_whadtv_2.png" /></a></div>
 
 <div id="clam">tu marca everywhere!</div>
 
@@ -86,8 +86,8 @@
 
 <ul>
 <li class="ini">&copy; whadtv</li>
-<li><a href="http://whadtv.com/pages/legal">condiciones lagales</a></li>
-<li><a href="http://whadtv.com/users/contacto">contacto</a></li>
+<li><a href="https://whadtv.com/pages/legal">condiciones lagales</a></li>
+<li><a href="https://whadtv.com/users/contacto">contacto</a></li>
 </ul>
 
 </div>
