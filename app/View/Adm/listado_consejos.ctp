@@ -35,7 +35,7 @@
 			if ($cuentaMensaje['Consejo']['idAsunto'] == $consejo['Consejo']['idAsunto']){ ?>
 				<span class="inf"><?php echo $cuentaMensaje[0]['nMensajes']; ?></span>
 				<!--<span class="inf" title="Mensajes"><?php echo $cuentaMensaje['Consejo']['idAsunto']; ?></span>-->
-				<!--<span class="inf"><?php echo $cuentaMensaje['Consejo']['nMensajes'] ?></span>-->
+				<!--<span class="inf"><?php //echo $cuentaMensaje['Consejo']['nMensajes'] ?></span>-->
 			<?php }
 		}
 		?>

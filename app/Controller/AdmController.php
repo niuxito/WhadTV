@@ -1751,12 +1751,14 @@ class AdmController extends AppController{
 		$this->Consejo->id = $idConsejo;
 		$this->request->data = $this->Consejo->read(null,$idConsejo);
 		$situacion = $this->request->data['Consejo']['situacion'];
+		CakeLog::write("debug", "Cambiando situacion de consejo:".$situacion);
 		
-		if ($situacion == 'leido') {
-			$situacion = 'noleido';
+		if ($situacion == "leido") {
+			$situacion = "noleido";
 		}else{
-			$situacion = 'leido';	
+			$situacion = "leido";	
 		}
+		CakeLog::write("debug", "Nueva sutuación:".$situacion);
 		$this->request->data['Consejo']['situacion'] = $situacion;
 		if ($this->Consejo->save($this->request->data)) {
 			$this->Session->setFlash(__('La situacion ha sido actualizada.'), 'info');

@@ -28,6 +28,5 @@
 <div class="box_btns">
 	<ul>
 		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'listadodispositivosempresa', $empresa[0]['Empresa']['idEmpresa']), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
-		<!--<li><?php  echo $this->Html->link('Volver', 'javascript:history.back()', array('class'=>'btn up', 'div'=>false, 'name'=>'Volver'));?></li>-->
 	</ul>
 </div>

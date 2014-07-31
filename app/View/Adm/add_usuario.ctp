@@ -21,7 +21,6 @@
 		<option selected value = 100>No activado</option>
 		<option value = 1>Activado</option>
 		</select>  
-		<!--<?php echo $this->Form->input('nivel', array('class'=>'inpt', 'label'=>false, 'type'=>'text')); ?>-->
 	</label>
 	<label for="welcome_user" class="fld fmdm ini">
 		<h3>Tutorial bienvenida</h3>
@@ -29,14 +28,13 @@
 		<option selected value = 1>Visto</option>
 		<option value = 0>No visto</option>
 		</select>
-		<!--<?php echo $this->Form->input('welcome', array('class'=>'inpt', 'label'=>false, 'type'=>'text')); ?>-->
+		
 	</label>
 	<li><?php echo $this->Form->submit(__('Añadir'), array('class'=>'btn up', 'div'=>false));?></li>
 	<?php echo $this->Form->end();?>
 </div>
 
 <div class="box_btns">
-	<!--<h3><?php echo __('Acciones'); ?></h3>-->
 	<ul>
 		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'listadousuarios'), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
 	</ul>

@@ -13,7 +13,6 @@
 </div>
 
 <div class="box_btns">
-	<!--<h3><?php echo __('Acciones'); ?></h3>-->
 	<ul>
 		<li><?php echo $this->Html->link(__('Volver'), array('action' => 'listadoempresas'), array('class'=>'btn', 'div'=>false, 'name'=>'Volver')); ?></li>
 	</ul>
