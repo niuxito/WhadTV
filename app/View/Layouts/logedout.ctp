@@ -97,7 +97,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 	<?php  } ?>
 <?php }else{ ?>
 	<li class="ini txt">Bienvenida</li>
-	<li class="fnl"><?php //echo $this->Html->link(__('Contactar'), array('controller'=>'users','action'=>'contacto')); ?><a href="http://whadtv.com/#contact">Contactar</a></li>
+	<li class="fnl"><?php //echo $this->Html->link(__('Contactar'), array('controller'=>'users','action'=>'contacto')); ?><a href="https://whadtv.com/#contact">Contactar</a></li>
 	
 	
 	
