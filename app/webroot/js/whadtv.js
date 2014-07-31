@@ -159,9 +159,9 @@ function cargarEventosPush()
 			function(event) 
 			{
 				var objeto = jQ(this);
-				var url = "http://" + host + directorio + "/Reproductors/" + jQ(this).attr('op') + "/" + jQ(this).attr('id');
+				var url = "https://" + host + directorio + "/Reproductors/" + jQ(this).attr('op') + "/" + jQ(this).attr('id');
 				( jQ(this).attr('op') == 'sendActualizar' ) 
-				? url = "http://" + host + directorio + "/actualizacionDispositivos/" + jQ(this).attr('op') + "/" + jQ(this).attr('id')
+				? url = "https://" + host + directorio + "/actualizacionDispositivos/" + jQ(this).attr('op') + "/" + jQ(this).attr('id')
 				: false;
 				jQ.ajax(
 					{
