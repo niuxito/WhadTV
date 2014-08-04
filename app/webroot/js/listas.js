@@ -27,7 +27,7 @@ $(document).ready(function(){
 		var lista = $(this).attr('id');
 		$("#listado").append("<li lista="+lista+" pos=1 class=dropable>Insertar</li>");
 		$.ajax({
-			  url: "http://"+ip+"/GestVideo/ListaVideos/videosFromLista?idLista="+$(this).attr('id'),
+			  url: "https://"+ip+"/GestVideo/ListaVideos/videosFromLista?idLista="+$(this).attr('id'),
 			  beforeSend: function ( xhr ) {
 			    xhr.overrideMimeType("application/json; charset=x-user-defined");
 			  }

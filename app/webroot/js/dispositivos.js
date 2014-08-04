@@ -69,7 +69,7 @@ $(document).ready(function(){
 	
 	$( ".push" ).click(function(){
 		$.ajax({
-			  url: "http://"+ip+"/GestVideo/Dispositivos/"+$(this).attr('op')+"/"+$(this).attr('id'),
+			  url: "https://"+ip+"/GestVideo/Dispositivos/"+$(this).attr('op')+"/"+$(this).attr('id'),
 			  beforeSend: function ( xhr ) {
 			    xhr.overrideMimeType("application/json; charset=x-user-defined");
 			  }
