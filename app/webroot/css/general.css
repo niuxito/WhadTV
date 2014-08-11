@@ -1095,3 +1095,7 @@ left: 412px;
 	color:grey;
 }
 
+button.stripe-button-el{
+	width:100%;
+}
+

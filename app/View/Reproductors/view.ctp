@@ -15,9 +15,51 @@
 			<i>Ver link del reproductor</i>
 			</a>
 		</li>
-		<li><a class="lbr rep_link"  data-toggle="modal" data-target="#myModal">
-			<i>Renovar suscripción</i>
-			</a>
+		<?php $user = $this->Session->read("Auth"); ?>
+		<li>
+			<?php echo $this->Form->create(null, array('url' => array(
+				'controller'=>'Compras',
+				'action'=>'generarCargo',
+				'web_disp',
+				'month',
+				$dispositivo['Reproductor']['idDispositivo']))); 
+			?>
+			<!--<form action=DIRECTORIO."/Compras/generarCargo" method="POST">-->
+			  <script
+			    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			    data-key="pk_test_inKkeI9U0tKFxoIL0NKABOor"
+			    data-amount="1000"
+			    data-email="<?php echo h($user['User']['username']); ?>"
+			    data-currency="eur"
+			    data-name="WhadTV Web"
+			    data-description="Reproductor web 1 mes"
+			    data-label="+1 mes "
+			    data-image="/128x128.png">
+			  </script>
+			<?php echo $this->Form->end(); ?><!--</form>-->
+		</li>
+		<li>
+			<?php echo $this->Form->create(null, array('url' => array(
+				'controller'=>'Compras',
+				'action'=>'generarCargo',
+				'web_disp',
+				'year',
+				$dispositivo['Reproductor']['idDispositivo']))); 
+			?>
+			<!--<form action=DIRECTORIO."/Compras/generarCargo" method="POST">-->
+			  <script
+			    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+			    data-key="pk_test_inKkeI9U0tKFxoIL0NKABOor"
+			    data-amount="10000"
+			    data-email="<?php echo h($user['User']['username']); ?>"
+			    data-currency="eur"
+			    data-name="WhadTV Web"
+			    data-description="Reproductor web 1 año"
+			    data-label="+1 año "
+			    data-panel-label="Renovar"
+			    data-image="/128x128.png">
+			  </script>
+			<?php echo $this->Form->end(); ?><!--</form>-->
 		</li>
 	    <!--<li><a href="renovarReproductor/<?php //echo  h($dispositivo['Reproductor']['idDispositivo']); ?>" title="Renovar suscripción">Renovar suscripción</a></li>-->
 	  </ul>

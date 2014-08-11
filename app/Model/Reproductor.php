@@ -68,4 +68,48 @@ class Reproductor extends AppModel {
     	$dispositivos = $this->find("all", $options);
     	return $dispositivos;
 	}
+
+	public function incrementarUnMes(){
+		$options['fields'] = array( 'caducidad' );
+		$options['conditions'] = array( 'Reproductor.idDispositivo' => $this->id );
+
+		$resultado = $this->find( 'all', $options );
+		$fechaBase;
+		$hoy 	= new DateTime( );
+		$fecha 	= new DateTime( $resultado[0]['Reproductor']['caducidad'] );
+		
+		if( $fecha > $hoy ){
+			$fechaBase = $fecha;
+		}else{
+			$fechaBase = $hoy;
+		}
+		$fechaBase->add( new DateInterval( 'P1M' ) );
+		$data['Reproductor']['caducidad'] = $fechaBase->format( 'Y-m-d' );
+		if( $this->save( $data ) ){
+			CakeLog::write( 'debug', 'Se ha incrementado en un mes el reproductor '.$this->id );
+		}
+		
+	}
+
+	public function incrementarUnAnyo(){
+		$options['fields'] = array( 'caducidad' );
+		$options['conditions'] = array( 'Reproductor.idDispositivo' => $this->id );
+
+		$resultado = $this->find( 'all', $options );
+		$fechaBase;
+		$hoy 	= new DateTime( );
+		$fecha 	= new DateTime( $resultado[0]['Reproductor']['caducidad'] );
+		
+		if( $fecha > $hoy ){
+			$fechaBase = $fecha;
+		}else{
+			$fechaBase = $hoy;
+		}
+		$fechaBase->add( new DateInterval( 'P1Y' ) );
+		$data['Reproductor']['caducidad'] = $fechaBase->format( 'Y-m-d' );
+		if( $this->save( $data ) ){
+			CakeLog::write( 'debug', 'Se ha incrementado en un mes el reproductor '.$this->id );
+		}
+		
+	}
 }
