@@ -421,4 +421,24 @@ var $helpers = array("Session");
 		return 0;
 
 	}
+
+	public function demoWebBloqueada()
+	{
+		$empresa = $this->Session->read("Empresa");
+	 	return $empresa['Empresa']['demo_web_block'];
+	}
+
+	public function demoWebBlock(){
+		$empresa = $this->Session->read("Empresa");
+		$this->Empresa->id = $empresa['Empresa']['idEmpresa'];
+		$data['Empresa']['demo_web_block'] = ( $empresa['Empresa']['demo_web_block'] -1 ) * -1;
+		if( $this->Empresa->save( $data ) ){
+			$this->recargarEmpresa();
+			return new CakeResponse( array( 'body' => json_encode( array("OK")) ) );
+		}else{
+			return new CakeResponse( array( 'body' => json_encode( array("NOT OK")) ) );
+		}
+
+	}
+
 }
