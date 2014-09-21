@@ -1,6 +1,6 @@
 <?php if( isset($demo) && !$demo ){ ?>
 <div class="msg_inf rep_web">
-	<p>Ahora puedes probar durante 15 días y sin ningún compromiso nuestro reproductor web. Sin instalaciones, sin costes añadidos.</</p>
+	<p>Ahora puedes probar durante 15 días y sin ningún compromiso nuestro reproductor web. Sin instalaciones, sin costes añadidos.</p>
 	<h1>¡¡Pruebalo gratis, ahora!!</h1>
 </div>
 <?php } ?>
@@ -36,4 +36,13 @@ Por favor, introduce un texto que no contenga más de 60 caracteres.
 
 <?php echo $this->Form->end(); ?>
 
+<?php $empresa = $this->Session->read( 'Empresa' ); ?>
+<input type="checkbox" name="demo_web_block" id="demo_web_block" <?php if( $empresa['Empresa']['demo_web_block'] == 1 ){ echo "checked"; } ?> > No volver a mostrar esta ventana.</input>
+
 </div><!-- /forms -->
+<script>
+	jQ("#demo_web_block").change(function(){
+		jQ.post( directorio + "/Empresas/demoWebBlock" );
+		window.parent.closeSubWin();
+	});
+</script

@@ -60,7 +60,7 @@ class ReproductorsController extends AppController {
 		
 		$empresaC = new EmpresasController();
 		$empresaC->constructClasses();
-		if( !$empresaC->demoWebPasada() ) $this->set( 'demo', false );
+		if( !$empresaC->demoWebPasada() && !$empresaC->demoWebBloqueada() ) $this->set( 'demo', false );
 		$this->Reproductor->recursive = 0;
 		
 		$this->set('dispositivos', $dispositivos);
@@ -386,7 +386,7 @@ class ReproductorsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if($this->request->is('post') && $this->request->data['chk_reproductor'] != 0){
+		if( $this->request->is( 'post' ) && $this->request->data['chk_reproductor'] != 0 ){
 			$id = $this->request->data['chk_reproductor'];
 		}
 			$idEmpresa = $this->getIdEmpresa();
@@ -633,7 +633,6 @@ class ReproductorsController extends AppController {
 						$this->redirect(array('controller' => 'videos', 'action'=>'index'));
 						return false;
 					}
-					//$this->redirect(array('action'=>'setQuickLista'));
 					$this->redirect(array('action'=>'index'));
 				} else {
 					$this->Session->setFlash(__('El dispositivo no ha podido guardarse. Por favor, intentalo de nuevo.'),'error');

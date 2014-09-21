@@ -1018,7 +1018,7 @@ class VideosController extends AppController {
 			"URL_origen" 	=> ( $video['Video']['tipo'] == 'imagen' ) ? $urls['img'] : $urls['orig'],
 			"destino"		=> array(
 					"method" 	=> "localStorage",
-					"file_name"	=> str_replace(" ", "_", $video['Video']['descripcion'] )
+					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 				),
 			"medidas"	=> array(
 						"h" => 90,
@@ -1034,6 +1034,13 @@ class VideosController extends AppController {
 		//return new CakeResponse( array( 'body' =>  ) );
 		//$this->set( 'Process', $this->Process->getMethod() );
 
+	}
+
+	public function arreglarNombres($nombre){
+		$nombre = str_replace(" ", "_", $nombre );
+		$nombre = str_replace(".", "", $nombre );
+		$nombre = $this->quitaracentos( $nombre ); 
+		return $nombre;
 	}
 	public function listasxvideo($idVideo){
 		$ListaVideos = new ListaVideosController();
@@ -1256,7 +1263,7 @@ class VideosController extends AppController {
 				"URL_origen" 	=> $urls['orig'],
 				"destino"		=> array(
 						"method" 	=> "localStorage",
-						"file_name"	=> str_replace( " ", "_", $this->quitaracentos( $video['Video']['descripcion'] ) )
+						"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 					),
 				"medidas"		=> array(
 						"h"			=> $medidas['h'],
@@ -1287,7 +1294,7 @@ class VideosController extends AppController {
 			"URL_origen" 	=> $urls['img'],
 			"destino"		=> array(
 					"method" 	=> "localStorage",
-					"file_name"	=> str_replace(" ", "_", $this->quitaracentos( $video['Video']['descripcion'] ) )
+					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 			),
 			"medidas"	=> array(
 					"h" => ( $size ) ? $size['h'] : 720,
@@ -1330,7 +1337,7 @@ class VideosController extends AppController {
 			"destino"		=> array(
 					"tiempo"	=> $video['Video']['time'],
 					"method" 	=> "localStorage",
-					"file_name"	=> str_replace(" ", "_", $this->quitaracentos( $video['Video']['descripcion'] ) )
+					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 				),
 			"callback" 		=>( $callback ) ? $callback."/".$hash : "https://".HOST.DIRECTORIO."/videos/updateVideoJson/".$video['Video']['idVideo']."/".$hash
 			);
@@ -1358,7 +1365,7 @@ class VideosController extends AppController {
 			"destino"		=> array(
 					"tiempo"	=> $video['Video']['time'],
 					"method" 	=> "localStorage",
-					"file_name"	=> str_replace(" ", "_", $this->quitaracentos( $video['Video']['descripcion'] ) )
+					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 				),
 			"callback" 		=>"https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']."/".$hash
 			);

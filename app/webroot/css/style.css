@@ -898,4 +898,16 @@ footer ul li {
 	margin-right:15px;
 }
 
+.error .help-inline{
+	color: red;
+	font-size: 20px;
+	text-align: center;	
+	margin: auto;
+	float:left;
+	/* width: 60%; */
+	background: white;
+	margin-top:10px;
+	border-radius:10px;
+	padding: 0 10px;
+}
 

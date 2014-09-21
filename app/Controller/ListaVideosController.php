@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class ListaVideosController extends AppController {
 
-	var $components = array ('RequestHandler','DebugKit.Toolbar');
+	var $components = array ('RequestHandler','DebugKit.Toolbar', 'Auth');
 	public $opciones = array();
 /**
  * index method
