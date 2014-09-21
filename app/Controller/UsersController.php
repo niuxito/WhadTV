@@ -323,7 +323,7 @@ class UsersController extends AppController {
 					        		/*
 					        		 * Muestra pantalla de gestión de empresas
 					        		 */
-					        		
+					        		return new 	CakeResponse(array('body' => json_encode( array('status'=>'ok') ) ) );
 					        		$this->redirect(array('controller'=>'Empresas', 'action'=>'selectEmpresa'));
 					        		
 					        		
@@ -354,7 +354,8 @@ class UsersController extends AppController {
 		        } else {
 		        	CakeLog::write('debug','Usuario incorrecto');
 		            $this->Session->setFlash(__('Nombre de usuario o password incorrecto.'), 'info');
-		            $this->render("login", 'default');
+		            //$this->render("login", 'default');
+		            return new 	CakeResponse(array('body' => json_encode( array('status'=>'usuario/password incorrecto') ) ) );
 		        }
 		    }else{
 		    	$logeado = $this->Session->read('Auth');

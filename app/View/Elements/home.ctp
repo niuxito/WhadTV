@@ -100,9 +100,15 @@
           </div>
           <div class="col-lg-10">
             <?php echo $this->Form->create('User', array('action' => 'login')); ?>
-                  <input type="email" name="data[User][username]" id="emailInput" placeholder="Tu email" value="">
-                   <input type="password" name="data[User][password]" id="passInput" placeholder="Tu password" value="">
-                  <input type="submit" id="subscribeButton" class="login" value="Accede">
+                  <div class="control-group error">
+                    <div class="controls">
+                      <input type="email" name="data[User][username]" id="emailInput" placeholder="Tu email" value="">
+                       <input type="password" name="data[User][password]" id="passInput" placeholder="Tu password" value="">
+                      <input type="submit" id="subscribeButton" class="login" value="Accede">
+                      <span class="help-inline hide">Please correct the error</span>
+                    </div>
+                  </div>
+
             <?php echo $this->Form->end(); ?>
           </div>
 
@@ -311,6 +317,8 @@
   echo $this->MyHtml->script('lightbox-2.6.min');
   echo $this->MyHtml->script('jquery.scrollTo');
   echo $this->MyHtml->script('jquery.nav');
+  echo $this->MyHtml->script('jquery.form');
+  echo $this->MyHtml->script('login');
 ?>
 
 <script>
