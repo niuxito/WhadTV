@@ -1747,7 +1747,6 @@ class AdmController extends AppController{
 	}
 	
 	public function situacionConsejo($idConsejo = null){
-		
 		$this->loadModel('Consejo');
 		$this->Consejo->id = $idConsejo;
 		$this->request->data = $this->Consejo->read(null,$idConsejo);
