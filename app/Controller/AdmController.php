@@ -140,7 +140,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('El usuario no existe en esta empresa.'));
 		}else{
-			If ($eUsuariosC->EmpresaUsuario->delete()){
+			if ($eUsuariosC->EmpresaUsuario->delete()){
 				$this->Session->setFlash(__('El usuario ha sido dado de baja correctamente en la empresa.'));
 				//$this->redirect(array('action' => 'listadoEmpresasUsuarios'));
 				$this->redirect($this->referer());
@@ -161,7 +161,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('El usuario no existe en esta empresa.'));
 		}else{
-			If ($this->EmpresaUsuario->delete()){
+			if ($this->EmpresaUsuario->delete()){
 				$this->Session->setFlash(__('El usuario ha sido dado de baja correctamente en la empresa.'));
 			}else{
 				$this->Session->setFlash(__('El usuario no ha podido ser dado de baja en la empresa.'));
@@ -305,7 +305,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('El usuario no existe.'));
 		}else{
-			If ($this->Usuarios->delete()){
+			if ($this->Usuarios->delete()){
 				$this->Session->setFlash(__('El usuario ha sido eliminado correctamente.'));
 				$this->redirect($this->referer());
 			}else{
@@ -373,7 +373,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La empresa no existe..'));
 		}else{
-			If ($empresaC->Empresa->delete()){
+			if ($empresaC->Empresa->delete()){
 				$this->Session->setFlash(__('La empresa ha sido dada de baja correctamente.'));
 				$this->redirect(array('action' => 'listadoEmpresas'));
 			}else{
@@ -940,7 +940,7 @@ class AdmController extends AppController{
 		}else{
 			$this->request->data['Dispositivo']['idEmpresa'] = '';
 			if ($dispositivoC->Dispositivo->save($this->request->data)) {
-			//If ($eUsuariosC->EmpresaUsuario->delete()){
+			//if ($eUsuariosC->EmpresaUsuario->delete()){
 				$this->Session->setFlash(__('El dispositivo ha sido desvinculado de la empresa.'),'info');
 				//$this->redirect(array('action' => 'listadoEmpresasUsuarios'));
 				$this->redirect($this->referer());
@@ -1127,7 +1127,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('El dispositivo no existe.'));
 		}else{
-			If ($this->Dispositivo->delete()){
+			if ($this->Dispositivo->delete()){
 				$this->Session->setFlash(__('El dispositivo ha sido eliminado correctamente.'));
 				//$this->redirect(array('action' => 'listadoEmpresasUsuarios'));
 				$this->redirect($this->referer());
@@ -1290,7 +1290,7 @@ class AdmController extends AppController{
 			if ($resultado == 0) {
 				$this->Session->setFlash(__('La listaDispositivo no existe.'));
 			}else{
-				If ($this->ListaDispositivo->delete()){
+				if ($this->ListaDispositivo->delete()){
 					$this->Session->setFlash(__('Se ha desvinculado correctamente.'),'info');
 					$this->redirect(array('action' => 'listadolistasdispositivo',$idDispositivo));	
 				}else{
@@ -1393,7 +1393,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La lista no existe.'));
 		}else{
-			If ($this->Listum->delete()){
+			if ($this->Listum->delete()){
 				$this->Session->setFlash(__('La lista ha sido eliminada correctamente.'));
 				//$this->redirect($this->referer());
 			}else{
@@ -1431,7 +1431,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La lista no existe.'));
 		}else{
-			If ($this->Listum->delete()){
+			if ($this->Listum->delete()){
 				$this->Session->setFlash(__('La lista ha sido eliminada correctamente.'));
 				$this->redirect(array('action' => 'listadolistasdispositivo',$idDispositivo));
 				//$this->redirect($this->referer());
@@ -1455,7 +1455,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La ListaVideo no existe.'));
 		}else{
-			If ($this->ListaVideo->delete()){
+			if ($this->ListaVideo->delete()){
 				$this->Session->setFlash(__('La ListaVideo ha sido eliminada correctamente.'));
 				//$this->redirect($this->referer());
 			}else{
@@ -1478,7 +1478,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La ListaDispositivo no existe.'));
 		}else{
-			If ($this->ListaDispositivo->delete()){
+			if ($this->ListaDispositivo->delete()){
 				$this->Session->setFlash(__('La ListaDispositivo ha sido eliminada correctamente.'));
 				//$this->redirect($this->referer());
 			}else{
@@ -1502,7 +1502,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('Este video no existe en la lista.'));
 		}else{
-			If ($listavC->ListaVideo->delete()){
+			if ($listavC->ListaVideo->delete()){
 				$this->Session->setFlash(__('El video ha sido eliminado correctamente de la lista.'));
 				//$this->redirect(array('action' => 'listadoEmpresasUsuarios'));
 				$this->redirect($this->referer());
@@ -1943,7 +1943,7 @@ class AdmController extends AppController{
 					$this->deleteAgenciaUsuarioId($agenciaUsuario['AgenciaUsuario']['id']);
 				}
 			}
-			If ($this->Agencia->delete()){
+			if ($this->Agencia->delete()){
 				$this->Session->setFlash(__('La Agencia ha sido eliminada correctamente de la empresa.'),'info');
 				$this->redirect($this->referer());
 			}else{
@@ -1965,7 +1965,7 @@ class AdmController extends AppController{
 		if ($resultado == 0) {
 			$this->Session->setFlash(__('La AgenciaUsuario no existe.'));
 		}else{
-			If ($this->AgenciaUsuario->delete()){
+			if ($this->AgenciaUsuario->delete()){
 				$this->Session->setFlash(__('La AgenciaUsuario ha sido eliminada correctamente.'),'info');
 			}else{
 				$this->Session->setFlash(__('La AgenciaUsuario no ha podido ser eliminada.'));
