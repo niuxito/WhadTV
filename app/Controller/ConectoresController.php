@@ -43,22 +43,27 @@ class ConectoresController extends AppController {
 		$this->set('conectores',$this->Conector->find('all',$options));
 
 		if ($this->request->is('post')) {
-			$this->request->data['Conector']['idEmpresa'] = $idEmpresa;
-			$this->request->data['Conector']['fecha_creacion'] =  DboSource::expression('NOW()');
-			
-			$optionsMxid['fields'] = array('max(id)id');
-			$resultadoMxid =$this->Conector->find("all", $optionsMxid);
-			if(count( $resultadoMxid) > 0){
-				$id = $resultadoMxid[0][0]['id'] + 1;
+			if( $this->request->data['Conector']['descripcion'] != ""){
+				$this->request->data['Conector']['idEmpresa'] = $idEmpresa;
+				$this->request->data['Conector']['fecha_creacion'] =  DboSource::expression('NOW()');
+				
+				$optionsMxid['fields'] = array('max(id)id');
+				$resultadoMxid =$this->Conector->find("all", $optionsMxid);
+				if(count( $resultadoMxid) > 0){
+					$id = $resultadoMxid[0][0]['id'] + 1;
+				}else{
+					$id = 1;
+				}
+				$this->request->data['Conector']['codigo'] = 'CON'.$id.'EMP'.$idEmpresa.'FC'.date('y').date('m').date('d');
+				if ($this->Conector->save($this->request->data)) {
+					$this->Session->setFlash(__('El conector se ha creado.'), 'info');
+					$this->redirect(array('action' => 'listaConectores/'.$idEmpresa));
+				} else {
+					$this->Session->setFlash(__('El conector no ha podido crearse. Por favor, intentalo de nuevo.'), 'error');
+				}
 			}else{
-				$id = 1;
-			}
-			$this->request->data['Conector']['codigo'] = 'CON'.$id.'EMP'.$idEmpresa.'FC'.date('y').date('m').date('d');
-			if ($this->Conector->save($this->request->data)) {
-				$this->Session->setFlash(__('El conector se ha creado.'), 'info');
+				$this->Session->setFlash(__('Debes escribir un nombre para el conector.'), 'info');
 				$this->redirect(array('action' => 'listaConectores/'.$idEmpresa));
-			} else {
-				$this->Session->setFlash(__('El conector no ha podido crearse. Por favor, intentalo de nuevo.'), 'error');
 			}
 		}
 
