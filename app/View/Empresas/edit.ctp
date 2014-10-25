@@ -33,6 +33,8 @@
 </label>
 
 <div class="box_btns">
+<?php $empresa = $this->Session->read('Empresa'); ?>
+<?php echo $this->Html->link(__('Conectores'), array('controller'=>'conectores', 'action' => 'listaConectores', $empresa['Empresa']['idEmpresa']), array('class'=>'btn up', 'div'=>false, 'name'=>'Conectores')); ?>
 <?php echo $this->Form->button("Eliminar empresa", array('class'=>'btn', 'action' => 'delete', $this->Form->value('Empresa.idEmpresa')),null, __('Are you sure you want to delete # %s?', $this->Form->value('Empresa.idEmpresa'))); ?>
 <?php echo $this->Form->submit("Modificar", array('class'=>'btn up', 'div'=>false, 'name'=>'submit_ok')); ?>
 

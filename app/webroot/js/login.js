@@ -9,7 +9,7 @@ $(document).ready( function (){
 									resultado = JSON.parse(data.responseText);
 									console.log(resultado.status);
 									if(resultado.status == "ok"){ 
-										window.location.reload();
+										window.location = directorio+'/Users/login';
 									}else{
 										$('.help-inline').text( resultado.status ) ;
 										$('.help-inline').removeClass('hide');	

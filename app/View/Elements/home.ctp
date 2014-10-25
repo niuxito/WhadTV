@@ -20,6 +20,16 @@
 
 <title>WhadTV - Inicio</title>
 <!-- CSS file links -->
+<?php
+   echo $this->MyHtml->css('bootstrap.min');
+   echo $this->MyHtml->css('style');
+   echo $this->MyHtml->css('jquery.bxslider');
+   echo $this->MyHtml->css('lightbox');
+   echo $this->MyHtml->css('responsive');
+   echo $this->MyHtml->css('home');
+   echo $this->element('config');
+?>
+
 
 </head>
 
@@ -298,16 +308,6 @@
       </div><!-- END Container -->
     </footer><!-- END Footer -->
     
-<?php
-   echo $this->MyHtml->css('bootstrap.min');
-   echo $this->MyHtml->css('style');
-   echo $this->MyHtml->css('jquery.bxslider');
-   echo $this->MyHtml->css('lightbox');
-   echo $this->MyHtml->css('responsive');
-   echo $this->MyHtml->css('home');
-   echo $this->element('config');
-?>
-
 <!-- JavaScript file links -->
 <?php
   echo $this->MyHtml->script('jquery');
