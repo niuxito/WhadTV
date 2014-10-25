@@ -319,7 +319,7 @@ class UsersController extends AppController {
 								//echo "Todo esto es la variable".SYSTEM_STATUS;
 								(  ( SYSTEM_STATUS == 0 ) ) ? $this->redirect( array( 'action'=>'off' ) ) : false;
 
-					        	if( count( $resultado ) > 1){
+					        	if( count( $resultado ) > 0){
 					        		/*
 					        		 * Muestra pantalla de gestión de empresas
 					        		 */

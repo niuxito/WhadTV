@@ -535,6 +535,8 @@ body.pg_login #contnt .wrap {padding: 0}
 .list .ops .btn.st_msg img, .mlist li .btn.st_msg img {background-image: url(../img/icons/ico_comms_min.png)}
 .list .ops .btn.st_timer img, .mlist li .btn.st_timer img {background-image: url(../img/icons/ico_timer_mn.png)}
 .list .ops .btn.st_agen img, .mlist li .btn.st_agen img {background-image: url(../img/icons/ico_disp.png)}
+.list .ops .btn.st_pass img, .mlist li .btn.st_pass img {background-image: url(../img/test-pass-icon.png)}
+.list .ops .btn.st_fail img, .mlist li .btn.st_fail img {background-image: url(../img/test-fail-icon.png)}
 
 
 .list .ops .btn:hover, .mlist li .btn:hover, .list .alrts .btn:hover {border-color: #ffbd00; background-color: #fff9e9}
