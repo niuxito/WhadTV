@@ -352,7 +352,7 @@ class VideosController extends AppController {
 							$this->processVideo(
 								$video['Video']['idVideo'],
 								'crt_mp4',
-								"https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
+								HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
 							);
 							CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$this->Video->id);
 							$this->Session->setFlash(__('El video ha llegado correctamente, va ser procesado por nuestros servidores.'), 'info');
@@ -410,7 +410,7 @@ class VideosController extends AppController {
 							$video['Video']['idVideo'],
 							'crt_image_max',
 							array('h' =>90, 'w' => 160),
-							"https://".HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
+							HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
 						);
 						//$this->generarVideosDesdeImagen($fileOK['rutas'], $this->request->data['Video']['tiempo'], $resultado[0]['Video']['idVideo']);
 						//CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$video['Video']['idVideo']);
@@ -472,7 +472,7 @@ class VideosController extends AppController {
 							$video['Video']['idVideo'],
 							'crt_image_max',
 							array('h' =>90, 'w' => 160),
-							"https://".HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
+							HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
 						);
 						//CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$this->Video->id);
 						//$this->redirect(array('action' => 'index'));
@@ -596,7 +596,7 @@ class VideosController extends AppController {
 		
 		$ruta['URLArchivo'] = $ruta['URLRelativa'].'/'.$ruta['nombreArchivo'].'.'.$ruta['extension'];
 		$ruta['URLArchivoSinExtension'] = $ruta['URLRelativa'].'/'.$ruta['nombreArchivo'];
-		$ruta['URL_WEB'] = "https://".HOST.DIRECTORIO."/".$ruta['URLArchivo'];
+		$ruta['URL_WEB'] = HOST.DIRECTORIO."/".$ruta['URLArchivo'];
 		return $ruta;
 	}
 	
@@ -1025,7 +1025,7 @@ class VideosController extends AppController {
 						"w" => 160
 					),
 			"frame" => 1,	
-			"callback" 		=>"https://".HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']."/".$hash
+			"callback" 		=>HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']."/".$hash
 			);
 		CakeLog::write( 'debug', $parametros['callback'] );
 		//print_r($parametros);
@@ -1253,7 +1253,7 @@ class VideosController extends AppController {
 		$urls = json_decode($video['Video']['url'],1);
 		if( !array_key_exists( 'orig', $urls ) ){
 			if( array_key_exists( 'img', $urls ) ){
-				$this->processImageAsVideo( $id, 'crt_img2video', "https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$id );
+				$this->processImageAsVideo( $id, 'crt_img2video', HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$id );
 			}else{
 				return new CakeResponse( array( 'body'=>json_encode( array( '_error'=>'No existe la referencia original' ) ) ) ) ;
 			}
@@ -1269,7 +1269,7 @@ class VideosController extends AppController {
 						"h"			=> $medidas['h'],
 						"w"			=> $medidas['w']		
 					),
-				"callback" 		=>( $callback ) ? $callback."/".$hash : "https://".HOST.DIRECTORIO."/videos/updateVideoJson/".$id."/".$hash
+				"callback" 		=>( $callback ) ? $callback."/".$hash : HOST.DIRECTORIO."/videos/updateVideoJson/".$id."/".$hash
 				);
 
 			$this->Process->setMethod( ( defined( 'PROCESS_METHOD' ) ) ? PROCESS_METHOD : 'directo' );
@@ -1301,7 +1301,7 @@ class VideosController extends AppController {
 					"w" => ( $size ) ? $size['w'] : 1280,
 					"q" => 80
 			),
-			"callback" 		=>( $callback ) ? $callback."/".$hash : "https://".HOST.DIRECTORIO."/videos/updateImageJson/".$video['Video']['idVideo']."/".$hash
+			"callback" 		=>( $callback ) ? $callback."/".$hash : HOST.DIRECTORIO."/videos/updateImageJson/".$video['Video']['idVideo']."/".$hash
 			);
 		CakeLog::write( 'debug', $parametros['callback'] );
 		print_r($parametros);
@@ -1339,7 +1339,7 @@ class VideosController extends AppController {
 					"method" 	=> "localStorage",
 					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 				),
-			"callback" 		=>( $callback ) ? $callback."/".$hash : "https://".HOST.DIRECTORIO."/videos/updateVideoJson/".$video['Video']['idVideo']."/".$hash
+			"callback" 		=>( $callback ) ? $callback."/".$hash : HOST.DIRECTORIO."/videos/updateVideoJson/".$video['Video']['idVideo']."/".$hash
 			);
 		CakeLog::write( 'debug', $parametros['callback'] );
 		//print_r($parametros);
@@ -1367,7 +1367,7 @@ class VideosController extends AppController {
 					"method" 	=> "localStorage",
 					"file_name"	=> $this->arreglarNombres( $video['Video']['descripcion'] )
 				),
-			"callback" 		=>"https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']."/".$hash
+			"callback" 		=>HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']."/".$hash
 			);
 		CakeLog::write( 'debug', $parametros['callback'] );
 		//print_r($parametros);
@@ -1478,7 +1478,7 @@ class VideosController extends AppController {
 				$name_exploded = explode( '.', $video['Video']['name'] );
 				$ext = $name_exploded[count( $name_exploded ) -1];
 				$campo = ( $video['Video']['tipo'] == 'imagen' ) ? 'img' : 'orig';
-				$info[$campo] = ( strpos($video['Video']['url'], "https://") === false ) ? "https://".HOST.DIRECTORIO."/" : "";
+				$info[$campo] = ( strpos($video['Video']['url'], "https://") === false ) ? HOST.DIRECTORIO."/" : "";
 				$info[$campo] .= $video['Video']['url'].'.'.$ext;
 				$video['Video']['url'] = json_encode( $info );
 				$this->Video->id = $video['Video']['id'];
