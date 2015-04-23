@@ -1,4 +1,4 @@
-var ip = 'localhost';
+var ip = 'http://localhost';
 $(document).ready(function(){
 	$(".draggable").draggable({
 		appendTo:"body",
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	
 	$( ".push" ).click(function(){
 		$.ajax({
-			  url: "https://"+ip+"/GestVideo/Dispositivos/"+$(this).attr('op')+"/"+$(this).attr('id'),
+			  url: ip+"/GestVideo/Dispositivos/"+$(this).attr('op')+"/"+$(this).attr('id'),
 			  beforeSend: function ( xhr ) {
 			    xhr.overrideMimeType("application/json; charset=x-user-defined");
 			  }
