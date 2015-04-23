@@ -243,7 +243,7 @@ class ReproductorsController extends AppController {
 	
 	public function getGoogleIdFromId( $id ){
 		$options[ 'fields' ] = array( 'idGoogle' );
-		$options[ 'conditions' ]   = array( "idDispositivo = '".$id."'" ); 
+		$options[ 'conditions' ]   = array( "idDispositivo"=>$id, 'tipo'=>'android' ); 
 		$resultado = $this->Reproductor->find("all", $options); // "Select idEmpresa from empresa as Empresa where idEmpresa = '".$id."'" );
 		if( count( $resultado ) > 0){
 			$idGoogle = $resultado[0]['Reproductor']['idGoogle'];
