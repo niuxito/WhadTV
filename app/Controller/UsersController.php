@@ -177,7 +177,7 @@ class UsersController extends AppController {
 			if( count( $resultado ) > 0 ){
 				if($resultado[0]['User']['nivel'] == 100){
 					$this->request->data['User']['hashString']  = $hash;
-					$this->render('password');
+					$this->render('password', 'logedout');
 				}else{
 					$this->Session->setFlash("El usuario ya está activado.", 'info');
 					$this->redirect("login");
@@ -273,7 +273,7 @@ class UsersController extends AppController {
 		$this->render("lista", 'loged');
 	}
 	
-	function login() {
+	public function login() {
 		
 			if ($this->request->is('post')) {
 				
@@ -307,9 +307,9 @@ class UsersController extends AppController {
 							$resultado = $EmpresaUsuarios->EmpresaUsuario->find("all", array('conditions' => "idUsuario = '".$id."'"));
 							$user = $this->Session->read('Auth');
 							$this->User->id = $id;
-							$datos['User']['timestampLAcceso'] = DboSource::expression('NOW()');
-							$this->set('fecha', array($datos, $this->User->id));
-							$this->User->save($datos);
+							//$datos['User']['timestampLAcceso'] = DboSource::expression('NOW()');
+							//$this->set('fecha', array($datos, $this->User->id));
+							$this->User->save();
 
 							//if($user['User']['nivel'] == 0){
 
