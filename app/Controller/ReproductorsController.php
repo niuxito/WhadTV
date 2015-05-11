@@ -444,7 +444,7 @@ class ReproductorsController extends AppController {
 		//print_r($this->request->data);
 		if ($this->request->is('post')) {
 			$this->Reproductor->create();
-			$this->request->data['Reproductor']['timestamp'] = DboSource::expression('NOW()');
+			$this->request->data['Reproductor']['timestamp'] = date();
 			if ($this->Reproductor->save($this->request->data)) {
 				$this->Session->setFlash(__('El dispositivo ha sido guardado.'),'info');
 				$this->redirect($this->referer());
@@ -613,16 +613,16 @@ class ReproductorsController extends AppController {
 
 			if( $idEmpresa != 0 ){
 				$this->Reproductor->create();
-				$this->request->data['Reproductor']['timestamp'] 		= DboSource::expression('NOW()');
+				$this->request->data['Reproductor']['timestamp'] 		= date('Y-m-d');
 				$this->request->data['Reproductor']['idDispositivo'] 	= md5(microtime());
 				$this->request->data['Reproductor']['idEmpresa'] 		= $idEmpresa;
 				$this->request->data['Reproductor']['idGoogle'] 		= 0;
 				$this->request->data['Reproductor']['tipo'] 			= "web";
-				$this->request->data['Reproductor']['timestampCreacion']= DboSource::expression('NOW()');
+				$this->request->data['Reproductor']['timestampCreacion']= date('Y-m-d');
 				$this->request->data['Reproductor']['caducidad']		
 							= ( $empresa['Empresa']['demo_web'] == 1) 
-							? DboSource::expression('NOW()')
-							: DboSource::expression('DATE_ADD(NOW(), INTERVAL 15 DAY)');
+							? date('Y-m-d')
+							: date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+15, date("Y")));
 
 
 				if ($this->Reproductor->save($this->request->data)) {
