@@ -186,6 +186,7 @@ class ReproductorsController extends AppController {
 		$data['Reproductor']['id'] = $id;
 		$data['Reproductor']['play'] = "1";
 		$this->Reproductor->save($data);
+		CakeLog::write('debug', 'Se ha guardado el nuevo estado');
 		$gId = $this->getGoogleIdFromId($id);
 		$resultado =( $gId == "0" ) ? $this->wsMessage( 'sendPlay',$id ) :$this->push( $opcion, $gId );
 		//$resultado =( $gId !== 0 ) ? $this->push( $opcion, $gId ) : $this->wsMessage( 'sendPlay',$id );
@@ -316,7 +317,15 @@ class ReproductorsController extends AppController {
 	{
 		$url = WS_SERVER.$accion.'?dispositivo='.$id;
 		CakeLog::write( "Dispositivos", $url );
-		return file_get_contents( $url );
+		//$url = 'https://android.googleapis.com/gcm/send';
+		$ch = curl_init();
+		
+		// Set the url, number of POST vars, POST data
+		curl_setopt( $ch, CURLOPT_URL, $url );
+		$result = curl_exec($ch);
+		CakeLog::write("debug", $result);
+		return $result;
+		//return file_get_contents( $url );
 	} 
 	
 	public function addlista($idDispositivo, $idLista = null){
