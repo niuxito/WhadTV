@@ -367,6 +367,17 @@ class VideosController extends AppController {
 						$this->redirect(array('action' => 'index'));
 					}
 				}
+		}else{
+			$this->loadModel('Listum');
+			$listas = $this->Listum->getListasByEmpresa($this->Session->read('Empresa.Empresa.idEmpresa'));
+			$new_listas = array();
+			foreach($listas as $lista){
+				$new_listas[$lista['Listum']['idLista']] = $lista['Listum']['descripcion'];
+			}
+			if( count($listas) > 1){
+				$this->set('show_listas', true);
+			}
+			$this->set('listas', $new_listas);
 		}
 	}
 	
