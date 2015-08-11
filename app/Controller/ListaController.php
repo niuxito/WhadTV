@@ -147,4 +147,21 @@ class ListaController extends AppController {
 		$this->Session->setFlash(__('La lista no se ha eliminado.'), 'error');
 		$this->redirect(array('controller'=>'Videos', 'action'=>'index'));
 	}
+
+
+	public function getListas(){
+		$listas = $this->Listum->getListasByEmpresa($this->Session->read('Empresa.Empresa.idEmpresa'));
+		$listas_json = array();
+		foreach($listas as $lista){
+			$listas_json[$lista['Listum']['idLista']] = $lista['Listum'];
+			foreach($lista['ListaVideo'] as $video){
+			$listas_json[$lista['Listum']['idLista']]['contenido'][] = $video['Video']['fotograma']; 
+			}
+			//$listas_json[$lista['Listum']['idLista']]['contenido'][$lista['Video']['idVideo']] = $lista['Video'];
+			//$listas_json[$lista['Listum']['idLista']]['contenido'][$lista['Video']['idVideo']]['url'] = 
+
+			//json_decode($listas_json[$lista['Listum']['idLista']]['contenido'][$lista['Video']['idVideo']]['url'], 1); 
+		}
+		return new CakeResponse(array('body'=>json_encode($listas_json)));
+	}
 }
