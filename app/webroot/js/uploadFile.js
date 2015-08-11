@@ -190,6 +190,43 @@ jQ(document)
 										;
 									});
 
+
+		$('.file-input').change(function() {
+						console.log("se ha introducido un video");
+						jQ("[name='temporal']").remove();
+						jQ("[name='temporal']").attr('name', '');
+						var filesToUpload = this.files[0];
+							console.log(filesToUpload.size);
+							if (filesToUpload.size > max_file_size) {
+								console.log("El fichero es muy grande");
+								alert("Debes subir un fichero de menos de "
+										+ max_file_size / 1000000 + "MB");
+							} else {
+								if ( filesToUpload.type.match('/x-flv.*|shockwave.*/')){
+									jQ('form [type=submit]')
+											.removeAttr('disabled');
+								}else{
+									/*var vid = document.createElement("video");
+									vid.setAttribute( "name", "temporal" );
+									try{
+										var reader = new FileReader();  
+										reader.onload = function(e) {vid.src = e.target.result;}
+										reader.readAsDataURL(filesToUpload);
+										vid.addEventListener('loadedmetadata', function() {
+											console.log(vid.duration);
+											jQ("[name='data[Video][tiempo]']").val(Math.round(vid.duration));
+											jQ('form [type=submit]').removeAttr('disabled');
+										});		
+									}catch(err){
+										console.log(err);*/
+										jQ('form [type=submit]').removeAttr('disabled');
+									//}			
+								}
+							}
+				
+						;
+					});
+
 					jQ('.img_input')
 							.change(
 									function() {
