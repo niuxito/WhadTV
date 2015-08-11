@@ -34,6 +34,21 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 	public $helpers = array( 'MyHtml' );
+	public $components = array('DebugKit.Toolbar', 'RequestHandler','Session',
+		    	'Auth' => array(
+		        	'loginAction' => array(
+			            'action' => 'login'
+	        		),
+		        'authError' => 'Did you really think you are allowed to see that?',
+		        'authenticate' => array(
+		            'Form' => array(
+		                'fields' => array(
+		                	'username' => 'username',
+	        				'password' => 'password')
+		            )
+		        )
+		    )
+		);
 	
 	function beforeFilter() 
 	{
