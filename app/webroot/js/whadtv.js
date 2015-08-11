@@ -98,6 +98,13 @@ jQ(document).ready(function() {
 	if( typeof demo !== "undefined" ){
 		( demo ) ? openSubWin('Reproductors/crear',700,400,2,'Añadir un nuevo reproductor web') : false;
 	}
+
+	jQ('.add_content').click(function(){
+		jQ.get(directorio+'/videos/addVideo', function(data){
+			jQ('.modal-content').html(data);
+			jQ('#myModal').modal('show');
+		});
+	});
 });
 
 function cargarEventosSonido() {
