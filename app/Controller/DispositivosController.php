@@ -21,6 +21,7 @@ class DispositivosController extends AppController {
         'password' => 'password'
         );
 		$this->Auth->allow('actualizar');
+		$this->Auth->allow('sendActualizar');
 		$this->Auth->allow('logo');
 		$this->Auth->allow('video');
 		$this->Auth->allow('alta');
@@ -181,7 +182,7 @@ class DispositivosController extends AppController {
 	
 	public function getGoogleIdFromId( $id ){
 		$options[ 'fields' ] = array( 'idGoogle' );
-		$options[ 'conditions' ]   = array( "idDispositivo = '".$id."'" ); 
+		$options[ 'conditions' ]   = array( "idDispositivo = '".$id."'", 'tipo'=>'android' ); 
 		$resultado = $this->Dispositivo->find("all", $options); // "Select idEmpresa from empresa as Empresa where idEmpresa = '".$id."'" );
 		if( count( $resultado ) > 0){
 			$idGoogle = $resultado[0]['Dispositivo']['idGoogle'];
@@ -481,9 +482,9 @@ class DispositivosController extends AppController {
 		if($tipoContenido == 'imagen'){
 			$url = $contenido['imgs'][$orientacion]['720p'];
 		}else{
-			$url = @$contenido[$tiempo][$orientacion][$medidas]['mp4'];
+			$url = @$contenido[$tiempo][$orientacion][$medidas]['webm'];
 			if( is_null( $url ) ){
-				$url = $contenido[$tiempo][$orientacion]['720x1080']['h264'];
+				$url = $contenido[$tiempo][$orientacion]['720x1080']['webm'];
 			}
 		}
 		return $url;
