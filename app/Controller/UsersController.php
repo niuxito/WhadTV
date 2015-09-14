@@ -301,8 +301,8 @@ class UsersController extends AppController {
     	
     	if($resultadoU[0]['User']['nivel'] > 99){
     		$this->Session->setFlash(__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.'), 'info');
-			//return new 	CakeResponse(array('body' => json_encode( array('status'=>__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.')) ) ) );
-			$this->Auth->logout();
+			return new 	CakeResponse(array('body' => json_encode( array('status'=>__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.')) ) ) );
+			//$this->Auth->logout();
     	}	
     	
     	/*
