@@ -93,7 +93,7 @@ class AppController extends Controller {
 						$this->redirect( array( 'controller'=>'Users', 'action'=>'logout' ) );
 					}
 				}
-				if( isset( $user['User'] ) && $user['User']['nivel'] > 1 ){
+				if( isset( $user['User']['nivel'] ) && $user['User']['nivel'] > 1 ){
 					$this->redirect( array( 'controller'=>'Users', 'action'=>'logout' ) );
 				}
 			}
