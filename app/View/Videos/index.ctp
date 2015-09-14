@@ -282,7 +282,7 @@ function wtv_openAdds () {
 
 <?php } 
 
-	echo $this->Html->script('jquery.min');
+	//echo $this->Html->script('jquery.min');
 	echo $this->Html->script('jquery-ui-1.10.3/jquery-ui.min');
 	echo $this->Html->script('ordenacion');
 	echo $this->Html->script('jquery-ui-1.10.3/jquery.ui.draggable.min');
