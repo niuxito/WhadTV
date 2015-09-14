@@ -25,6 +25,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Admin Layout -->
 <head>
 <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"> 
 <link rel="SHORTCUT ICON" href="<?php echo DIRECTORIO; ?>/img/whadtv.ico" />
@@ -33,7 +34,9 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-		<?php echo $this->Html->script('jquery-1.8.2.min'); ?>
+	
+
+		<?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
 		<?php echo $this->element('config');?>
 		<?php echo $this->Html->script('adm'); ?>
 		<?php echo $this->Html->css('tipTip'); ?>
@@ -61,7 +64,9 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 <?php echo $this->Html->css('cake.forms'); ?>
 <?php echo $this->Html->css('general');  ?>
 <!--<link href="/css/general.css?v=1" rel="stylesheet" type="text/css" />-->
-<?php echo $this->Html->script('jquery-1.8.2.min'); ?>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<?php //((echo $this->Html->script('jquery-1.8.2.min'); ?>
 <?php echo $this->Html->script('whadtv.js'); ?>
 
 <!----------------------------------- ## Cabecera ## ---------------------------------------------------->
