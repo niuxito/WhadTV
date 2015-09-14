@@ -327,6 +327,7 @@ class UsersController extends AppController {
     		return new 	CakeResponse(array('body' => json_encode( array('status'=>'ok') ) ) );
 
     	}
+    	return new 	CakeResponse(array('body' => json_encode( array('status'=>'El usuario no está asignado a ninguna empresa.') ) ) );
 	 
 	}
 	
