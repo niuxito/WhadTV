@@ -140,11 +140,12 @@ class VideosController extends AppController {
 	}
 	
 	public function getIdEmpresa(){
-		$empresa = $this->Session->read("Empresa");
-		if(is_null ($empresa) ){
+		$idEmpresa = $this->Session->read("Empresa.Empresa.idEmpresa");
+		if(is_null ($idEmpresa) ){
 			$this->redirect(array('controller'=>'empresas', 'action'=>'selectEmpresa'));
 		}
-		$idEmpresa = $empresa['Empresa']['idEmpresa'];
+
+		//$idEmpresa = $empresa['Empresa']['idEmpresa'];
 		return $idEmpresa;
 	}
 	
@@ -287,7 +288,7 @@ class VideosController extends AppController {
 			
 			$lista = new ListaVideosController();
 			$lista->constructClasses();
-			$lista->ListaVideo->deleteAll('idVideo = '.$id);
+			$lista->ListaVideo->deleteAll('ListaVideo.idVideo = '.$id);
 			
 			$this->Session->setFlash(__('El video ha sido eliminado.'), 'info');
 			$this->redirect(array('action'=>'index'));

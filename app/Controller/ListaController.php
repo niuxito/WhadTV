@@ -152,10 +152,13 @@ class ListaController extends AppController {
 	public function getListas(){
 		$listas = $this->Listum->getListasByEmpresa($this->Session->read('Empresa.Empresa.idEmpresa'));
 		$listas_json = array();
+		
 		foreach($listas as $lista){
 			$listas_json[$lista['Listum']['idLista']] = $lista['Listum'];
 			foreach($lista['ListaVideo'] as $video){
-			$listas_json[$lista['Listum']['idLista']]['contenido'][] = $video['Video']['fotograma']; 
+				CakeLog::write('debug', "Listas para uploader");
+				CakeLog::write('debug', print_r($video['Video'],1));
+				(isset($video['Video']['fotograma']) ) ? $listas_json[$lista['Listum']['idLista']]['contenido'][] =  $video['Video']['fotograma'] : false; 
 			}
 			//$listas_json[$lista['Listum']['idLista']]['contenido'][$lista['Video']['idVideo']] = $lista['Video'];
 			//$listas_json[$lista['Listum']['idLista']]['contenido'][$lista['Video']['idVideo']]['url'] = 
