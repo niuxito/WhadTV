@@ -1,4 +1,4 @@
-<?php
+	<?php
 header("Content-Type: text/event-stream\n\n");
 ?><?php
 /**
@@ -24,6 +24,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Loged eLayout -->
 <head>
 <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"> 
 <link rel="SHORTCUT ICON" href="<?php echo DIRECTORIO; ?>/img/whadtv.ico" />
@@ -32,7 +33,8 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-		<?php echo $this->Html->script('jquery-1.8.2.min'); ?>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
 		
 		<?php echo $this->Html->css('general');  ?>
 		
@@ -119,7 +121,9 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 
 <?php echo $this->Html->css('cake.forms'); ?>
 <!--<link href="/css/general.css?v=1" rel="stylesheet" type="text/css" />-->
-<?php echo $this->Html->script('jquery-1.8.2.min'); ?>
+<?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
 <?php echo $this->Html->script('whadtv'); ?>
 
 <!--<?php //echo $this->Html->script('plug/nivo-slider/jquery.nivo.slider.pack.js'); ?>-->
@@ -153,15 +157,15 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', ua]);
-  _gaq.push(['_trackPageview']);
+  // var _gaq = _gaq || [];
+  // _gaq.push(['_setAccount', ua]);
+  // _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+  // (function() {
+  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  // })();
 
 </script>
 
