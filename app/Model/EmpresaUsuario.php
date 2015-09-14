@@ -17,4 +17,12 @@ class EmpresaUsuario extends AppModel {
  * @var string
  */
 	public $primaryKey = 'id';
+
+	public function getEmpresasByUser( $user_id ){
+		$options = array(
+			'conditions' => array('idUsuario'=>$user_id)
+		);
+		$resultado = $this->find('all', $options);
+		return $resultado;
+	}
 }
