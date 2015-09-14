@@ -56,7 +56,7 @@ jQ(document)
 					
 					
 					
-					jQ(' form').ajaxForm(
+					$(' form').ajaxForm(
 							{	
 								target : '#myResultsDiv',
 								beforeSubmit : function(formData, jqForm,
@@ -99,47 +99,47 @@ jQ(document)
 
 							});
 
-					jQ('#imagen form, #video form').ajaxForm(
-							{	
-								target : '#myResultsDiv',
-								beforeSubmit : function(formData, jqForm,
-										options) {
-									console.log(jQ(jqForm));
-									jQ('form [type=submit]').attr('disabled', 'disabled');
-									var descripcion = jQ(jqForm).find('#VideoDescripcion')[0];
-									if(jQ(descripcion).val() == ""){
-										alert("Debes introducir un nombre para reconocer tu contenido");
-										jqForm.preventDefault();
+					// jQ('#imagen form, #video form').ajaxForm(
+					// 		{	
+					// 			target : '#myResultsDiv',
+					// 			beforeSubmit : function(formData, jqForm,
+					// 					options) {
+					// 				console.log(jQ(jqForm));
+					// 				jQ('form [type=submit]').attr('disabled', 'disabled');
+					// 				var descripcion = jQ(jqForm).find('#VideoDescripcion')[0];
+					// 				if(jQ(descripcion).val() == ""){
+					// 					alert("Debes introducir un nombre para reconocer tu contenido");
+					// 					jqForm.preventDefault();
 
-									}
-									jQ(".progress").show();
-								},
-								uploadProgress : function(event, position,
-										total, percentComplete) {
-									var percentVal = percentComplete + '%';
-									if (percentVal != '100%') {
-										jQ('.bar').width(percentVal);
-										jQ('.percent').html(percentVal);
-										jQ('#status').html("Cargando...");
-									} else {
-										jQ('#status').html("Cargado");
-										jQ(".progress").hide();
-										closeSubWin();
-									}
-								},
+					// 				}
+					// 				jQ(".progress").show();
+					// 			},
+					// 			uploadProgress : function(event, position,
+					// 					total, percentComplete) {
+					// 				var percentVal = percentComplete + '%';
+					// 				if (percentVal != '100%') {
+					// 					jQ('.bar').width(percentVal);
+					// 					jQ('.percent').html(percentVal);
+					// 					jQ('#status').html("Cargando...");
+					// 				} else {
+					// 					jQ('#status').html("Cargado");
+					// 					jQ(".progress").hide();
+					// 					closeSubWin();
+					// 				}
+					// 			},
 								
-								success: function (responseText, statusText,
-								 xhr){
-								 	 //window.location.reload(); 
-								},
+					// 			success: function (responseText, statusText,
+					// 			 xhr){
+					// 			 	 //window.location.reload(); 
+					// 			},
 								 
-								complete : function(responseText, statusText,
-										xhr) {
-									window.location.reload();
+					// 			complete : function(responseText, statusText,
+					// 					xhr) {
+					// 				window.location.reload();
 									
-								}
+					// 			}
 
-							});
+					// 		});
 					
 					jQ('form [type=submit]').attr('disabled', 'disabled');
 
