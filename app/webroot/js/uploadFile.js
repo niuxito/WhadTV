@@ -93,7 +93,7 @@ jQ(document)
 								 
 								complete : function(responseText, statusText,
 										xhr) {
-									//window.location.reload();
+									window.location.reload();
 									alert("Guardado!!!");
 								}
 
