@@ -34,8 +34,8 @@
 
 		<!-- Si existe más de una lista -->
 		
-		<?php if( $show_listas ){ ?>
-
+		<?php if( isset($show_listas) && $show_listas ){ ?>
+	
 			<div class="col-xs-12">
 				<label>Lista</label>
 				<?php echo $this->Form->select('listas', array($listas), array('class'=>'chosen-select col-lg-12','label' => 'Listas', 'data-placeholder' =>"Seleccione una lista")); ?>
