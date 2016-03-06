@@ -186,6 +186,7 @@ class ReproductorsController extends AppController {
 		$data['Reproductor']['id'] = $id;
 		$data['Reproductor']['play'] = "1";
 		$this->Reproductor->save($data);
+		CakeLog::write('debug', 'Se ha guardado el nuevo estado');
 		$gId = $this->getGoogleIdFromId($id);
 		$resultado =( $gId == "0" ) ? $this->wsMessage( 'sendPlay',$id ) :$this->push( $opcion, $gId );
 		//$resultado =( $gId !== 0 ) ? $this->push( $opcion, $gId ) : $this->wsMessage( 'sendPlay',$id );
@@ -243,7 +244,7 @@ class ReproductorsController extends AppController {
 	
 	public function getGoogleIdFromId( $id ){
 		$options[ 'fields' ] = array( 'idGoogle' );
-		$options[ 'conditions' ]   = array( "idDispositivo = '".$id."'" ); 
+		$options[ 'conditions' ]   = array( "idDispositivo"=>$id, 'tipo'=>'android' ); 
 		$resultado = $this->Reproductor->find("all", $options); // "Select idEmpresa from empresa as Empresa where idEmpresa = '".$id."'" );
 		if( count( $resultado ) > 0){
 			$idGoogle = $resultado[0]['Reproductor']['idGoogle'];
@@ -316,7 +317,15 @@ class ReproductorsController extends AppController {
 	{
 		$url = WS_SERVER.$accion.'?dispositivo='.$id;
 		CakeLog::write( "Dispositivos", $url );
-		return file_get_contents( $url );
+		//$url = 'https://android.googleapis.com/gcm/send';
+		$ch = curl_init();
+		
+		// Set the url, number of POST vars, POST data
+		curl_setopt( $ch, CURLOPT_URL, $url );
+		$result = curl_exec($ch);
+		CakeLog::write("debug", $result);
+		return $result;
+		//return file_get_contents( $url );
 	} 
 	
 	public function addlista($idDispositivo, $idLista = null){
@@ -444,7 +453,7 @@ class ReproductorsController extends AppController {
 		//print_r($this->request->data);
 		if ($this->request->is('post')) {
 			$this->Reproductor->create();
-			$this->request->data['Reproductor']['timestamp'] = DboSource::expression('NOW()');
+			$this->request->data['Reproductor']['timestamp'] = date();
 			if ($this->Reproductor->save($this->request->data)) {
 				$this->Session->setFlash(__('El dispositivo ha sido guardado.'),'info');
 				$this->redirect($this->referer());
@@ -613,16 +622,16 @@ class ReproductorsController extends AppController {
 
 			if( $idEmpresa != 0 ){
 				$this->Reproductor->create();
-				$this->request->data['Reproductor']['timestamp'] 		= DboSource::expression('NOW()');
+				$this->request->data['Reproductor']['timestamp'] 		= date('Y-m-d');
 				$this->request->data['Reproductor']['idDispositivo'] 	= md5(microtime());
 				$this->request->data['Reproductor']['idEmpresa'] 		= $idEmpresa;
 				$this->request->data['Reproductor']['idGoogle'] 		= 0;
 				$this->request->data['Reproductor']['tipo'] 			= "web";
-				$this->request->data['Reproductor']['timestampCreacion']= DboSource::expression('NOW()');
+				$this->request->data['Reproductor']['timestampCreacion']= date('Y-m-d');
 				$this->request->data['Reproductor']['caducidad']		
 							= ( $empresa['Empresa']['demo_web'] == 1) 
-							? DboSource::expression('NOW()')
-							: DboSource::expression('DATE_ADD(NOW(), INTERVAL 15 DAY)');
+							? date('Y-m-d')
+							: date('Y-m-d', mktime(0, 0, 0, date("m")  , date("d")+15, date("Y")));
 
 
 				if ($this->Reproductor->save($this->request->data)) {

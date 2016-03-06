@@ -1302,7 +1302,7 @@ class BeanQueueJob
         if ($in_server->alive() !== true)
             return false;
             
-        return new BeanQueueJob(&$in_server, $in_job_id, $in_job_payload);
+        return new BeanQueueJob($in_server, $in_job_id, $in_job_payload);
     }
     
     /**

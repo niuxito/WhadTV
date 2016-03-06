@@ -55,7 +55,7 @@ Este mail te ha sido enviado porque alguien se ha registrado con tu cuenta de co
 
 <div class="elm red">
 
-<a class="prv lbr " href="https://<?php echo HOST.DIRECTORIO; ?>/users/activar/<?php echo $hash; ?>"><img src="https://whadtv.com/img/ico_validar.png" /><br />Validar cuenta</a>
+<a class="prv lbr " href="<?php echo HOST.DIRECTORIO; ?>/users/activar/<?php echo $hash; ?>"><img src="https://whadtv.com/img/ico_validar.png" /><br />Validar cuenta</a>
 
 </a>
 </div>
@@ -65,7 +65,7 @@ Este mail te ha sido enviado porque alguien se ha registrado con tu cuenta de co
 
 <div class="elm">
 
-<a class="prv lbr" href="https://<?php echo HOST.DIRECTORIO; ?>/users/rechazo/<?php echo $hash ; ?>"><img src="https://whadtv.com/img/ico_cancelar.png" /><br />Cancelar</a>
+<a class="prv lbr" href="<?php echo HOST.DIRECTORIO; ?>/users/rechazo/<?php echo $hash ; ?>"><img src="https://whadtv.com/img/ico_cancelar.png" /><br />Cancelar</a>
 
 
 </div>

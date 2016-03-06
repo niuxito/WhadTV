@@ -1,7 +1,8 @@
 <?php	
-		echo $this->Html->css('jquery-ui-1.10.3/jquery-ui.min');
-		echo $this->Html->css('whadtv');
+		//echo $this->Html->css('jquery-ui-1.10.3/jquery-ui.min');
 		echo $this->Html->css('bootstrap.min');
+		//echo $this->Html->css('whadtv');
+		
 ?>
 
 <?php echo $this->Session->flash(); ?>
@@ -17,13 +18,7 @@
 	<?php echo $this->Html->link(__('Todo'), array('controller'=>'videos','action'=>'index'));?>
 		
 	<?php
-		echo $this->Html->script('jquery-1.8.2.min');
-		echo $this->Html->script('jquery-ui-1.10.3/jquery-ui.min');
-		echo $this->Html->script('ordenacion');
-		echo $this->Html->script('jquery-ui-1.10.3/jquery.ui.draggable.min');
-		echo $this->Html->script('jquery-ui-1.10.3/jquery.ui.sortable.min');
-		echo $this->Html->script("jquery.ui.touch-punch.min"); 
-		echo $this->Html->script('whadtv');
+		
 		
 		
 
@@ -42,7 +37,13 @@
   </button>
   <ul class="dropdown-menu" role="menu">
   	<?php if(!isset( $listaC ) ){ ?>
-    	<li><a href="#" onClick="openSubWin(directorio+'/videos/addVideo',700,350,2,'Añadir nuevo contenido: ');return false" title="Añadir video">Añadir nuevo contenido</a></li>
+  	
+    	<li>
+    		<a class="lbr add_content" datas-toggle="modal" data-target="#myModal">
+				<i>Añadir nuevo contenido</i>
+			</a>
+    		<!--<a href="#" onClick="openSubWin(directorio+'/videos/addVideo',700,420,2,'Añadir nuevo contenido: ');return false" title="Añadir video">Añadir nuevo contenido</a>-->
+    	</li>
     <?php }else{ ?>
     	<li><a href="#" onClick="openSubWin(directorio+'/Reproductors/updatedispositivos/<?php echo h($listaC[0]['Listum']['idLista']); ?>',790,425,2,'Actualizar dispositivos vinculados');return false">Actualizar reproductores</a></li>
     <?php } ?>
@@ -119,10 +120,7 @@
 
 	<?php echo $this->Session->flash(); ?>
 
-<?php 
-	if(isset( $listaC ) ){ ?>
-		<script type="text/javascript">jQ(document).ready(function(){wtv_openAdds();});</script>
-<?php }?>
+
 <div id="sortable" class="slist"> <!-- sortable -->
 <?php
 	if( count($videos) > 0){
@@ -201,6 +199,18 @@
 
 </div> <!-- /sub_wrap -->
 </div><!-- /box_vid -->
+
+<!-- Modal div -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 <?php 
 	if(isset( $listaC ) ){ ?>
 <!--
@@ -209,6 +219,9 @@
 
 -->
 <div id="box_add_video" class="box_adds st_video"><div class="bx_head"><h4>Por favor, arrastre los vídeos deseados hasta su posición en la lista.</h4><!--<div class="bx_close"></div>--></div><div class="bx_cntnt"></div></div>
+
+
+
 
 
 
@@ -233,7 +246,7 @@ function wtv_openAdds () {
 			//console.log(e);
 			jQ('#box_add_video .bx_cntnt').html(e);
 			jQ('#box_add_video .bx_cntnt .vlist').find('.elm').addClass('draggable');
-			/*jQ('#box_add_video .bx_cntnt .vlist .elm').mousedown(function() {
+			jQ('#box_add_video .bx_cntnt .vlist .elm').mousedown(function() {
 				jQ(this).addClass('move');
 			});
 			jQ('#box_add_video .bx_cntnt .vlist .elm').mouseup(function() {
@@ -245,26 +258,44 @@ function wtv_openAdds () {
 				revert:true,
 				helper:"clone",
 				stack: ".elm.move"
-			});*/
+			});
 			cargarSortable();
 			cargarDraggable();
-			//cargarDrops();
-		//jQ('#box_add_video .bx_cntnt .box_pop').width(jQ('#box_add_video .bx_cntnt .vlist').width());
-		//jQ('.addvl').closest('.elm').hide();
+			//	cargarDrops();
+		jQ('#box_add_video .bx_cntnt .box_pop').width(jQ('#box_add_video .bx_cntnt .vlist').width());
+		jQ('.addvl').closest('.elm').hide();
 	});
 
 	jQ('#box_add_video').fadeIn(300);
 
 	ftrPst();
+
+
 }
 
 	
 
 //]]></script>
-<?php } ?>
-<?php 
+
+
+
+
+<?php } 
+
+	//echo $this->Html->script('jquery.min');
+	echo $this->Html->script('jquery-ui-1.10.3/jquery-ui.min');
+	echo $this->Html->script('ordenacion');
+	echo $this->Html->script('jquery-ui-1.10.3/jquery.ui.draggable.min');
+	echo $this->Html->script('jquery-ui-1.10.3/jquery.ui.sortable.min');
+	echo $this->Html->script("jquery.ui.touch-punch.min"); 
+	echo $this->Html->script('whadtv');
 	echo $this->Html->script('list');
-	
+	echo $this->Html->script("fileinput.min");
 	echo $this->Html->script('bootstrap.min');
  ?>
+
+ <?php 
+	if(isset( $listaC ) ){ ?>
+		<script type="text/javascript">jQ(document).ready(function(){wtv_openAdds();});</script>
+<?php }?>
 

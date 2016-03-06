@@ -225,7 +225,7 @@
       </div>
       <div class="modal-body">
       	<p>Copia este enlace y pégalo en un navegador para comenzar a reproducir.</p>
-        <input type="text" class="form-control input-lg" id="rep_url" value="<?php echo WEB_PLAYER_URL.'?id='.$dispositivo['Reproductor']['idDispositivo'];?>" onclick="this.select();">
+        <input type="text" class="form-control input-lg" id="rep_url" value="<?php echo WEB_PLAYER_URL.'?id='.$dispositivo['Reproductor']['idDispositivo'].'&test=1';?>" onclick="this.select();">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

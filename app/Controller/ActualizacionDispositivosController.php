@@ -1,6 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
-App::import('Controller', 'Dispositivos');
+App::import('Controller', 'Reproductors');
 /**
  * ActualizacionDispositivos Controller
  *
@@ -29,12 +29,13 @@ class ActualizacionDispositivosController extends AppController {
 	{
 		$valor = $this->add($idReproductor);
 		if ($valor){
-			$dispositivosC = new DispositivosController();
+			$dispositivosC = new ReproductorsController();
 			$dispositivosC->constructClasses();
-			$resultado = $dispositivosC->Dispositivo->read('idGoogle', $idReproductor);
-			CakeLog::write("debug", implode(",", $resultado['Dispositivo']));
-			$idGoogle = $resultado['Dispositivo']['idGoogle'];
-			( $idGoogle == "0" ) ?  $this->mandarMensaje($idReproductor, 'sendActualizar') : $dispositivosC->sendActualizar( $idReproductor );
+			//$resultado = $dispositivosC->Dispositivo->read('idGoogle', $idReproductor);
+			//CakeLog::write("debug", implode(",", $resultado['Dispositivo']));
+			//$idGoogle = $resultado['Dispositivo']['idGoogle'];
+			//( $idGoogle == "0" ) ?  $this->mandarMensaje($idReproductor, 'sendActualizar') : $dispositivosC->sendActualizar( $idReproductor );
+			$dispositivosC->sendActualizar( $idReproductor );
 			return new CakeResponse( array( 'body' => json_encode(array( 'resultado' => 'OK'))));
 		}else{
 			return new CakeResponse( array( 'body' => $valor) ) ;

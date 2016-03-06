@@ -45,7 +45,8 @@ class ProcessComponent extends Component {
 			var_dump($ch);                                                                                                                   
 			$result = curl_exec( $ch );
 			echo "Resultado =".PHP_EOL;
-			print_r( $result );
+			
+			CakeLog::write('debug', 'Resultado:'.print_r( $result, 1 ));
 			return new CakeResponse( array( 'body' =>  json_encode($result) ) );
 		}elseif( $this->method == "beanstalk" ){
 

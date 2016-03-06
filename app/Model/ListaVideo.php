@@ -17,4 +17,11 @@ class ListaVideo extends AppModel {
  * @var string
  */
 	public $primaryKey = 'id';
+
+	public $belongsTo = array(
+		'Video' => array(
+            'className' => 'Video',
+            'foreignKey' => 'idVideo'
+        ));
+
 }

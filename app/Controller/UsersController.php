@@ -177,7 +177,7 @@ class UsersController extends AppController {
 			if( count( $resultado ) > 0 ){
 				if($resultado[0]['User']['nivel'] == 100){
 					$this->request->data['User']['hashString']  = $hash;
-					$this->render('password');
+					$this->render('password', 'logedout');
 				}else{
 					$this->Session->setFlash("El usuario ya está activado.", 'info');
 					$this->redirect("login");
@@ -273,104 +273,62 @@ class UsersController extends AppController {
 		$this->render("lista", 'loged');
 	}
 	
-	function login() {
+	public function login() {
 		
-			if ($this->request->is('post')) {
-				
-				
-				
-				//debug()
-				$this->Auth->authenticate = array('Form');
-				$user = $this->request->data['User'];
-		        if ($this->Auth->login()) {
-		        	
-		        	/*
-		        	 * Comprobar que el usuario ha aceptado las condiciones
-		        	 */
-		        	$resultadoU = $this->User->find("all", array('conditions' => "username = '".$user['username']."'"));
-		        	$id = $resultadoU[0]['User']['id'];
-		        	
-		        	if($resultadoU[0]['User']['nivel'] > 99){
-		        		$this->Session->setFlash(__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.'), 'info');
-		    			$this->Auth->logout();
-		        		//$this->redirect("/Users/logout");
-		        	}else{
-				        	/*if($resultadoU[0]['User']['normas'] == 0){
-				        		//$this->redirect("/Users/condiciones");
-				        		$this->redirect("/Users/edit");
-				        	}*/
-				        	/*
-				        	 * Comprobar si existen más empresas para este usuario
-				        	 */
-				        	$EmpresaUsuarios = new EmpresaUsuariosController();
-							$EmpresaUsuarios->constructClasses();
-							$resultado = $EmpresaUsuarios->EmpresaUsuario->find("all", array('conditions' => "idUsuario = '".$id."'"));
-							$user = $this->Session->read('Auth');
-							$this->User->id = $id;
-							$datos['User']['timestampLAcceso'] = DboSource::expression('NOW()');
-							$this->set('fecha', array($datos, $this->User->id));
-							$this->User->save($datos);
+		if (!$this->request->is('post')) {
+			$logeado = $this->Session->read('Auth');
+	    	$this->set( 'auth',$logeado );
+	    	if(!is_null($logeado) && array_key_exists('User', $logeado)){
+	    		$this->redirect(array('controller'=>'videos'));
+	    	}else{
+	    		$this->render("login", 'default');
+	    	}
+	    	return true;
+		}
 
-							//if($user['User']['nivel'] == 0){
+		$this->Auth->authenticate = array('Form');
+		$user = $this->request->data['User'];
+        if (!$this->Auth->login()) {
+        	CakeLog::write('debug','Usuario incorrecto');
+            return new 	CakeResponse(array('body' => json_encode( array('status'=>'usuario/password incorrecto') ) ) );
+        }
+	        	
+    	/*
+    	 * Comprobar que el usuario ha aceptado las condiciones
+    	 */
+    	$resultadoU = $this->User->find("all", array('conditions' => "username = '".$user['username']."'"));
+    	$id = $resultadoU[0]['User']['id'];
+    	
+    	if($resultadoU[0]['User']['nivel'] > 99){
+    		$this->Session->setFlash(__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.'), 'info');
+			$this->Auth->logout();
+			//return new 	CakeResponse(array('body' => json_encode( array('status'=>__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.')) ) ) );
+    	}	
+    	
+    	/*
+    	 * Comprobar si existen más empresas para este usuario
+    	 */
+		$this->loadModel('EmpresaUsuario');
+		$empresas = $this->EmpresaUsuario->getEmpresasByUser( $id );
 
-								//$this->redirect(array('controller'=>'adm','action'=>'index'));
-
-							//}else{
-								//echo "Todo esto es la variable".SYSTEM_STATUS;
-								(  ( SYSTEM_STATUS == 0 ) ) ? $this->redirect( array( 'action'=>'off' ) ) : false;
-
-					        	if( count( $resultado ) > 0){
-					        		/*
-					        		 * Muestra pantalla de gestión de empresas
-					        		 */
-					        		return new 	CakeResponse(array('body' => json_encode( array('status'=>'ok') ) ) );
-					        		$this->redirect(array('controller'=>'Empresas', 'action'=>'selectEmpresa'));
-					        		
-					        		
-					        	}else{
-					        		/*
-					        		 * Muestra el panel de control de la empresa
-					        		 */
-					        		
-					        		if (count($resultado) > 0 ){
-						        		$empresa = new EmpresasController();
-						        		$empresa->constructClasses();
-						        		
-						        		$empresa->cargarEmpresa($resultado[0]['EmpresaUsuario']['idEmpresa']);
-						        		if( $empresa->demoWebPasada() ){
-						        			$this->redirect(array('controller'=>'videos','action'=>'index'));
-						        		}else{
-						        			$this->set('demo', true);
-						        			$this->redirect(array('controller'=>'reproductors','action'=>'index'));
-						        		}
-					        		}else{
-					        			$this->redirect(array('action'=>'logout'));
-					        			
-					        		}
-					        	}
-							//}
-				           // return $this->redirect($this->Auth->redirect('Users/index'));
-		        	}
-		        } else {
-		        	CakeLog::write('debug','Usuario incorrecto');
-		            $this->Session->setFlash(__('Nombre de usuario o password incorrecto.'), 'info');
-		            //$this->render("login", 'default');
-		            return new 	CakeResponse(array('body' => json_encode( array('status'=>'usuario/password incorrecto') ) ) );
-		        }
-		    }else{
-		    	$logeado = $this->Session->read('Auth');
-		    	$this->set( 'auth',$logeado );
-		    	if(!is_null($logeado) && array_key_exists('User', $logeado)){
-		    		$this->redirect(array('controller'=>'videos'));
-		    	}else{
-		    		$this->render("login", 'default');
-
-		    		//$this->redirect("/");
-		    	}
-		    }
-		    $this->render("login", 'default');
-		    //$this->redirect("/");
+		$user = $this->Session->read('Auth');
+		$this->User->id = $id;
 		
+		$this->User->save();
+
+		
+		(  ( SYSTEM_STATUS == 0 ) ) ? $this->redirect( array( 'action'=>'off' ) ) : false;
+
+    	if( count( $empresas ) > 0 ){
+
+    		/*
+    		 * Muestra pantalla de gestión de empresas
+    		 */
+    		return new 	CakeResponse(array('body' => json_encode( array('status'=>'ok') ) ) );
+
+    	}
+    	return new 	CakeResponse(array('body' => json_encode( array('status'=>'El usuario no está asignado a ninguna empresa.') ) ) );
+	 
 	}
 	
 	public function off()

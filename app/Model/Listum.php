@@ -16,5 +16,21 @@ class Listum extends AppModel {
 		'ListaDispositivo' => array(
 			'className' => 'ListaDispositivo',
 			'foreignKey' => 'idLista'
-	));
+		),
+		'ListaVideo' => array(
+			'className' => 'ListaVideo',
+			'foreignKey' => 'idLista'
+		)
+	);
+
+
+
+	public function getListasByEmpresa($empresa_id){
+		$options = array(
+			'conditions'=> array( 'idEmpresa'=>$empresa_id)
+		);
+		$this->recursive = 2;
+		$listas = $this->find('all', $options);
+		return $listas;
+	}
 }

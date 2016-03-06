@@ -173,15 +173,18 @@ body.pg_login .wrap {//max-width: 970px}
   * Fin del añadido 19/04/2013
   *
   **/
-
+/*
 .forms .btn, .box_btns .btn, a.lbtn, .box_ops h1 a.btn.up, .mlist .ops .btn.up  {
 	position: relative; float: right; width: auto !important; padding: 5px 8px; margin: 4px 0 0 10px; cursor: pointer;
 	font-size: 12px; line-height: 12px; text-align: center; color: #fff; text-shadow: -1px -1px 0 #000;
 	border: 1px solid #444; background: #555; -moz-border-radius: 4px; border-radius: 4px; -webkit-border-radius: 4px;
 	-moz-box-shadow: 0 0 5px #aaa; -webkit-box-shadow: 0 0 5px #aaa; box-shadow: 0 0 5px #aaa; vertical-align: middle
 }
+*/
+.forms { display:inline-block;}
+.forms .btn{ background: #555; } 
 a.lbtn {float: none; display: inline-block; margin: 4px 10px 4px 0}
-.forms .btn.up, a.lbtn.up, .box_btns .btn.up, .box_ops h1 a.btn.up, .mlist .ops .btn.up {
+.forms .btn.up, a.lbtn.up, .box_btns .btn.up, .box_ops h1 a.btn.up, .mlist .ops .btn.up, .modal-footer .btn.up {
 	font-size: 16px; line-height: 16px; background: #d76323; border-color: #c55216; text-shadow: -1px -1px 0 #bd4807;
 	margin-top: 0; padding: 7px 15px;
 }
@@ -1101,3 +1104,30 @@ button.stripe-button-el{
 	width:100%;
 }
 
+#selector_miniaturas div{
+	height: 20px;
+	margin-top: 20px;
+	background: black;
+	display: block;
+	text-align: center;
+}
+#selector_miniaturas div img{
+	height: 100%;
+	display: inline-block;
+	vertical-align: initial;
+}
+#selector_miniaturas div > .objeto_sel{
+	width: 1px;
+	display: inline-block;
+	height: 100%;
+	margin: 0;
+}
+
+#selector_miniaturas div > .arrow{
+	width: 10px;
+	height: 100%;
+	background: transparent;
+	border:1px solid white;
+	margin: 0;
+	position:absolute;
+}
