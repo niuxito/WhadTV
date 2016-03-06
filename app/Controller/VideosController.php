@@ -328,46 +328,46 @@ class VideosController extends AppController {
 	 */
 	public function addVideo() {
 		if ($this->request->is('post')) {
-			if($this->add()){	
-					$fileOK = $this->uploadVideo('img/files', $this->request->data['Video']['Document']);
-					if(!is_null($fileOK) && (( !array_key_exists("errors", $fileOK)) || (count( $fileOK['errors'] ) == 0 ))){
-						$auth = $this->Session->read("Auth");
-						$this->request->data['Video']['name'] = $fileOK['name'];
-						if(array_key_exists('S3URL', $fileOK) && $fileOK[ 'S3URL' ] != ""){
-							$this->request->data['Video'][ 'url' ] = str_replace( '.'.$fileOK[ 'rutas' ][ 'extension' ], '', $fileOK[ 'S3URL' ] );
-						}else{
-							$this->request->data['Video'][ 'url' ] = json_encode( array( 'orig' => FULL_BASE_URL.DIRECTORIO.'/'.$fileOK['rutas']['URLArchivo'] ) );
-						}
-						$this->request->data['Video']['fotograma'] = str_replace("img/","",$fileOK['rutas']['fotograma']);
-						$this->request->data['Video']['estado'] = 'sin procesar';
-						$this->request->data['Video']['timestamp'] = DboSource::expression('NOW()');
-						$this->request->data['Video']['idUsuario'] = $auth['User']['id'];
-						$this->request->data['Video']['tipo'] = "video";
-						$this->request->data['Video']['time'] = $this->request->data['Video']['tiempo'];
-						
-						CakeLog::write("Comando", "url del fotograma: ".$this->request->data['Video']['fotograma']);
-			
-						if ($this->Video->save($this->request->data)) {
-							$video = $this->Video->read(null, null);
-							//$this->set('elvideo', $resultado);
-							$this->processVideo(
-								$video['Video']['idVideo'],
-								'crt_mp4',
-								HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
-							);
-							CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$this->Video->id);
-							$this->Session->setFlash(__('El video ha llegado correctamente, va ser procesado por nuestros servidores.'), 'info');
-							return new 	CakeResponse(array('body' => json_encode( $video) ) );
-				
-						} else {
-							$this->Session->setFlash(__('El video no ha podido guardarse. Por favor, intentalo de nuevo.'));
-							$this->redirect(array('action' => 'index'));
-						}
-			
-					}else{
-						$this->redirect(array('action' => 'index'));
-					}
+			CakeLog::write('debug','Se ha identificado un video');
+			$fileOK = $this->uploadVideo('img/files', $this->request->data['Video']['Document']);
+			if(!is_null($fileOK) && (( !array_key_exists("errors", $fileOK)) || (count( $fileOK['errors'] ) == 0 ))){
+				$auth = $this->Session->read("Auth");
+				$this->request->data['Video']['name'] = $fileOK['name'];
+				if(array_key_exists('S3URL', $fileOK) && $fileOK[ 'S3URL' ] != ""){
+					$this->request->data['Video'][ 'url' ] = str_replace( '.'.$fileOK[ 'rutas' ][ 'extension' ], '', $fileOK[ 'S3URL' ] );
+				}else{
+					$this->request->data['Video'][ 'url' ] = json_encode( array( 'orig' => FULL_BASE_URL.DIRECTORIO.'/'.$fileOK['rutas']['URLArchivo'] ) );
 				}
+				$this->request->data['Video']['fotograma'] = str_replace("img/","",$fileOK['rutas']['fotograma']);
+				$this->request->data['Video']['estado'] = 'sin procesar';
+				$this->request->data['Video']['timestamp'] = DboSource::expression('NOW()');
+				$this->request->data['Video']['idUsuario'] = $auth['User']['id'];
+				$this->request->data['Video']['tipo'] = "video";
+				$this->request->data['Video']['time'] = $this->request->data['Video']['tiempo'];
+				
+				CakeLog::write("Comando", "url del fotograma: ".$this->request->data['Video']['fotograma']);
+
+				if ($this->Video->save($this->request->data)) {
+					$video = $this->Video->read(null, null);
+					//$this->set('elvideo', $resultado);
+					$this->processVideo(
+						$video['Video']['idVideo'],
+						'crt_mp4',
+						HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
+					);
+					CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$this->Video->id);
+					$this->Session->setFlash(__('El video ha llegado correctamente, va ser procesado por nuestros servidores.'), 'info');
+					return new 	CakeResponse(array('body' => json_encode( $video) ) );
+		
+				} else {
+					$this->Session->setFlash(__('El video no ha podido guardarse. Por favor, intentalo de nuevo.'));
+					$this->redirect(array('action' => 'index'));
+				}
+
+			}else{
+				$this->redirect(array('action' => 'index'));
+			}
+			
 		}else{
 			$this->loadModel('Listum');
 			$listas = $this->Listum->getListasByEmpresa($this->Session->read('Empresa.Empresa.idEmpresa'));
@@ -382,7 +382,36 @@ class VideosController extends AppController {
 		}
 	}
 	
-	
+
+
+	/**
+	 * addFile method
+	 *
+	 * @return void
+	 */
+	public function addFile() 
+	{
+		if ($this->request->is('post')) {
+
+			if($this->add()){
+				$video_type = array('video/quicktime', 'video/avi','video/mp4', 'application/x-shockwave-flash', 'video/x-ms-wmv', 'video/webm','video/x-flv');
+				$image_type = array('image/gif','image/jpeg','image/pjpeg','image/png','image/jpg', 'image/png'); 
+				$imagenOk = $this->validarTipoFichero($this->request->data['Video']['Document'], $image_type);
+				if( $imagenOk ){
+					$this->addImagen();
+					return;
+				}else{
+					$videoOk = $this->validarTipoFichero($this->request->data['Video']['Document'], $video_type);
+					if( $videoOk ){
+						$this->addVideo();
+						return;
+					}
+				}
+
+			}
+		}
+	}
+
 	/**
 	 * addImagen method
 	 *
@@ -390,59 +419,55 @@ class VideosController extends AppController {
 	 */
 	public function addImagen() 
 	{
+		CakeLog::write('debug','Se ha identificado una imagen');
+		$fileOK = $this->uploadImagen('img/files', $this->request->data['Video']['Document']);
+			
+		if(!is_null($fileOK) && (( !array_key_exists("errors", $fileOK)) || (count( $fileOK['errors'] ) == 0 ))){
+				
+			$this->request->data['Video']['name'] = $fileOK['name'];
+			//$this->request->data['Video'][ 'url' ] = json_encode( array( "img" => $fileOK[ 'urls' ][0] ) );
+			$this->request->data['Video'][ 'url' ] = json_encode( array( "img" => FULL_BASE_URL.DIRECTORIO.'/'.$fileOK['rutas']['URLArchivo']  ) );
+			$this->request->data['Video']['fotograma'] = str_replace("img/","",$fileOK['rutas']['fotograma']);
+			$this->request->data['Video']['time'] = isset($this->request->data['Video']['tiempo']) ? $this->request->data['Video']['tiempo'] : 5;
+			$this->request->data['Video']['estado'] = 'sin procesar';
+			$this->request->data['Video']['timestamp'] = $this->Video->getDataSource()->expression('NOW()');
+			$this->request->data['Video']['tipo'] = "imagen";
 
-		if ($this->request->is('post')) {
+			if( $this->Video->save( $this->request->data ) ) {
 
-			if($this->add()){
-				$fileOK = $this->uploadImagen('img/files', $this->request->data['Video']['Document']);
-					
-				if(!is_null($fileOK) && (( !array_key_exists("errors", $fileOK)) || (count( $fileOK['errors'] ) == 0 ))){
-					
-					$this->request->data['Video']['name'] = $fileOK['name'];
-					//$this->request->data['Video'][ 'url' ] = json_encode( array( "img" => $fileOK[ 'urls' ][0] ) );
-					$this->request->data['Video'][ 'url' ] = json_encode( array( "img" => FULL_BASE_URL.DIRECTORIO.'/'.$fileOK['rutas']['URLArchivo']  ) );
-					$this->request->data['Video']['fotograma'] = str_replace("img/","",$fileOK['rutas']['fotograma']);
-					$this->request->data['Video']['time'] = $this->request->data['Video']['tiempo'];
-					$this->request->data['Video']['estado'] = 'sin procesar';
-					$this->request->data['Video']['timestamp'] = DboSource::expression('NOW()');
-					$this->request->data['Video']['tipo'] = "imagen";
-	
-					if( $this->Video->save( $this->request->data ) ) {
+				//$this->Session->setFlash(__('The video has been saved'), 'info');
+				//$resultado =$this->Video->find('all', array('conditions'=>array("url ='".$this->request->data['Video'][ 'url' ]."'")));
+				$video = $this->Video->read(null, null);
+				//$this->set('elvideo', $resultado);
+				$this->processImage(
+					$video['Video']['idVideo'],
+					'crt_image'
+					//"https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
+				);
+				$this->processImage(
+					$video['Video']['idVideo'],
+					'crt_image_max',
+					array('h' =>90, 'w' => 160),
+					HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
+				);
+				//$this->generarVideosDesdeImagen($fileOK['rutas'], $this->request->data['Video']['tiempo'], $resultado[0]['Video']['idVideo']);
+				//CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$video['Video']['idVideo']);
+				//$this->redirect(array('action' => 'index'));
+				return new 	CakeResponse(array('body' => json_encode( $video) ) );
 
-						//$this->Session->setFlash(__('The video has been saved'), 'info');
-						//$resultado =$this->Video->find('all', array('conditions'=>array("url ='".$this->request->data['Video'][ 'url' ]."'")));
-						$video = $this->Video->read(null, null);
-						//$this->set('elvideo', $resultado);
-						$this->processImage(
-							$video['Video']['idVideo'],
-							'crt_image'
-							//"https://".HOST.DIRECTORIO."/videos/updateVideoJsonPlusHTML5/".$video['Video']['idVideo']
-						);
-						$this->processImage(
-							$video['Video']['idVideo'],
-							'crt_image_max',
-							array('h' =>90, 'w' => 160),
-							HOST.DIRECTORIO."/videos/updateFotogramaJson/".$video['Video']['idVideo']
-						);
-						//$this->generarVideosDesdeImagen($fileOK['rutas'], $this->request->data['Video']['tiempo'], $resultado[0]['Video']['idVideo']);
-						//CakeLog::write('debug','El fichero con nombre '.$this->request->data['Video']['Document']['name'].' ha sido almacenado con el id: '.$video['Video']['idVideo']);
-						//$this->redirect(array('action' => 'index'));
-						return new 	CakeResponse(array('body' => json_encode( $video) ) );
+			} else {
 
-					} else {
-
-						$this->Session->setFlash(__('La imagen no ha sido guardada, prueba de nuevo.'));
-						$this->redirect(array('action' => 'index'));
-
-					}
-	
-				}else{
-					//$this->Session->setFlash(__('Este formato de video no está soportado'));
-					$this->redirect(array('action' => 'index'));
-				}
+				$this->Session->setFlash(__('La imagen no ha sido guardada, prueba de nuevo.'));
+				$this->redirect(array('action' => 'index'));
 
 			}
+
+		}else{
+			//$this->Session->setFlash(__('Este formato de video no está soportado'));
+			$this->redirect(array('action' => 'index'));
 		}
+
+	
 	}
 	
 	/**

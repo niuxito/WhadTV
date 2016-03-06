@@ -9,7 +9,7 @@
 	<h4 class="modal-title">Añadir nuevo contenido</h4>
 </div>
 
-<?php echo $this->Form->create('Video', array('type' => 'file', 'action'=>'addImagen'));?>
+<?php echo $this->Form->create('Video', array('type' => 'file', 'action'=>'addFile'));?>
 
 <div class="modal-body">
    <div class="forms">
@@ -86,7 +86,9 @@
 	
 	function generarSelectores(){
 		var selector = document.getElementById('selector_miniaturas');
-
+		if( selector == undefined){
+			return;
+		}
 		
 		for(var lista_i in contenido_listas) {
 

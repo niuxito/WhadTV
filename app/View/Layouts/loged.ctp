@@ -36,7 +36,10 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
 		
-		<?php echo $this->Html->css('general');  ?>
+		<?php 
+			echo $this->Html->css('bootstrap.min');
+			echo $this->Html->css('general');  
+		?>
 		
 		
 </head>
@@ -124,7 +127,9 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 <?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
-<?php echo $this->Html->script('whadtv'); ?>
+<?php 
+	echo $this->Html->script('bootstrap.min');
+	echo $this->Html->script('whadtv'); ?>
 
 <!--<?php //echo $this->Html->script('plug/nivo-slider/jquery.nivo.slider.pack.js'); ?>-->
 <?php echo $this->element('config');?>
@@ -151,6 +156,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 	jQ(document).ready(function(){
 		jQ(window).resize(function(){ if(!zd_rs){ zd_rs=1; setTimeout("ftrPst();zd_rs=0;", 100); } });
 		ftrPst();
+	//	$('.ini.txt').dropdown();
 	});
 
 //]]></script>
@@ -168,5 +174,6 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
   // })();
 
 </script>
+
 
 
