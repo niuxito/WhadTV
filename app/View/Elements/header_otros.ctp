@@ -13,7 +13,7 @@
 		<div id="emprs">
 
 		<h1>
-			<?php echo $empresa['Empresa']['Nombre']; ?>
+			<?php echo $empresa['Empresa']['nombre']; ?>
 		</h1>
 
 		<div class="ops">
