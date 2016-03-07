@@ -33,7 +33,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 		<?php echo $cakeDescription ?>:
 		<?php echo $title_for_layout; ?>
 	</title>
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 		<?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
 		
 		<?php 
