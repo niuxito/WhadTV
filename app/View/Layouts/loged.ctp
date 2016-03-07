@@ -125,8 +125,8 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 <?php echo $this->Html->css('cake.forms'); ?>
 <!--<link href="/css/general.css?v=1" rel="stylesheet" type="text/css" />-->
 <?php //echo $this->Html->script('jquery-1.8.2.min'); ?>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ -->
 <?php 
 	echo $this->Html->script('bootstrap.min');
 	echo $this->Html->script('whadtv'); ?>
