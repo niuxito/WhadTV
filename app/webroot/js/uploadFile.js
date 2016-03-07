@@ -56,7 +56,7 @@ jQ(document)
 					
 					
 					
-					$(' form').ajaxForm(
+					jQ(' form').ajaxForm(
 							{	
 								target : '#myResultsDiv',
 								beforeSubmit : function(formData, jqForm,
@@ -191,7 +191,7 @@ jQ(document)
 									});
 
 
-		$('.file-input').change(function() {
+		jQ('.file-input').change(function() {
 						console.log("se ha introducido un video");
 						jQ("[name='temporal']").remove();
 						jQ("[name='temporal']").attr('name', '');
