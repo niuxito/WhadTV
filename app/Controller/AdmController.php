@@ -802,8 +802,8 @@ class AdmController extends AppController{
 		$empresasC = new EmpresasController();
 		$empresasC->constructClasses();
 		if ($this->request->is('post')) {
-			if (Trim($this->request->data['Empresa']['Nombre'] != '')) {
-				$resultado = $empresasC->Empresa->find("all", array('conditions' => "Nombre = '".$this->request->data['Empresa']['Nombre']."'"));
+			if (Trim($this->request->data['Empresa']['nombre'] != '')) {
+				$resultado = $empresasC->Empresa->find("all", array('conditions' => "Nombre = '".$this->request->data['Empresa']['nombre']."'"));
 				if(count($resultado) == 0){
 					$this->request->data['Empresa']['url'] = '';
 					if ($empresasC->Empresa->save($this->request->data)) {
