@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Empresa'); ?></legend>
 	<?php
-		echo $this->Form->input('Nombre');
+		echo $this->Form->input('nombre');
 		
 	?>
 	</fieldset>

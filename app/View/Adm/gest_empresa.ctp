@@ -1,13 +1,13 @@
 <?php echo $this->Session->flash(); ?>
-<h1>Gestión empresa: <b><?php echo h($this->request->data['Empresa']['Nombre']); ?></b></h1>
+<h1>Gestión empresa: <b><?php echo h($this->request->data['Empresa']['nombre']); ?></b></h1>
 
 <div class="forms">
 
 <?php echo $this->Form->create('Empresa');?>
 
 <label for="titol_empresa" class="fld fmdm ini">
-<h3>Nombre de la empresa:</h3>
-<?php echo $this->Form->input('Nombre', array('class'=>'inpt', 'type'=>'text', 'label'=>false)); ?>
+<h3>nombre de la empresa:</h3>
+<?php echo $this->Form->input('nombre', array('class'=>'inpt', 'type'=>'text', 'label'=>false)); ?>
 
 </label>
 
@@ -48,7 +48,7 @@
 
 
 <!--<div class="acciones">
-<h1>Empresa: <b><?php echo h($empresa['Empresa']['Nombre']); ?></b></h1>
+<h1>Empresa: <b><?php echo h($empresa['Empresa']['nombre']); ?></b></h1>
 	<h3><?php echo __('Acciones'); ?></h3>
 	<ul>
 	<li><?php echo $this->Html->link(__('Asignar usuario'), array('action' => 'asignarUsuario',$empresa['Empresa']['idEmpresa'])); ?></li>

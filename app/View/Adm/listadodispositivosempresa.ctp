@@ -1,7 +1,7 @@
 <?php echo $this->Session->flash(); ?>
 <div class="box_ops brd_bx st_empr">
 
-<h1>Dispositivos en: <b><?php echo h($empresa[0]['Empresa']['Nombre']); ?></b></h1>
+<h1>Dispositivos en: <b><?php echo h($empresa[0]['Empresa']['nombre']); ?></b></h1>
 
 </div>
 
