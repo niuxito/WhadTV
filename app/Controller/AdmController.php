@@ -109,7 +109,7 @@ class AdmController extends AppController{
 		$userC->constructClasses();
 		$empresaC = new EmpresasController();
 		$empresaC->constructClasses();
-		$options['fields'] = array('Empresa.idEmpresa','Empresa.Nombre','empresaUsuario.id');
+		$options['fields'] = array('Empresa.idEmpresa','Empresa.nombre','empresaUsuario.id');
 		$options['conditions'] = array("empresaUsuario.idUsuario= ".$id);
 		$options['joins'] = array(
 				array('table' => 'empresaUsuario',
@@ -319,7 +319,7 @@ class AdmController extends AppController{
 		$empresaC->constructClasses();
 		
 		$options['fields'] = array(
-				'Empresa.idEmpresa','Empresa.Nombre','count(distinct lista.idLista) listas', 'count(distinct dispositivo.idDispositivo) dispositivos',
+				'Empresa.idEmpresa','Empresa.nombre','count(distinct lista.idLista) listas', 'count(distinct dispositivo.idDispositivo) dispositivos',
 				 'count(distinct video.idVideo) videos','count(distinct empresaUsuario.idUsuario) usuarios','count(distinct agencia.id)agencias'
 				);
 		$options['group'] = array('Empresa.idEmpresa');
@@ -698,7 +698,7 @@ class AdmController extends AppController{
 				$this->Session->setFlash(__('Los datos no han podido guardarse. Por favor, intentalo de nuevo.'),'error');
 			}
 		}
-		$this->set('empresas',$empresaC->Empresa->find('all',array('order' => 'Nombre')));
+		$this->set('empresas',$empresaC->Empresa->find('all',array('order' => 'nombre')));
 		
 		$resultado = $videosC->Video->read(null, $idVideo);
 		$formatos = json_decode($resultado['Video']['url'],1);
@@ -803,7 +803,7 @@ class AdmController extends AppController{
 		$empresasC->constructClasses();
 		if ($this->request->is('post')) {
 			if (Trim($this->request->data['Empresa']['nombre'] != '')) {
-				$resultado = $empresasC->Empresa->find("all", array('conditions' => "Nombre = '".$this->request->data['Empresa']['nombre']."'"));
+				$resultado = $empresasC->Empresa->find("all", array('conditions' => "nombre = '".$this->request->data['Empresa']['nombre']."'"));
 				if(count($resultado) == 0){
 					$this->request->data['Empresa']['url'] = '';
 					if ($empresasC->Empresa->save($this->request->data)) {
@@ -838,7 +838,7 @@ class AdmController extends AppController{
 			throw new NotFoundException(__('Invalid empresa'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			$resultado = $empresaC->Empresa->find("all", array('conditions'=> "Nombre = '".$this->data['Empresa']['Nombre']."'"));
+			$resultado = $empresaC->Empresa->find("all", array('conditions'=> "nombre = '".$this->data['Empresa']['nombre']."'"));
 			if( count( $resultado ) == 0){
 				if ($empresaC->Empresa->save($this->request->data)) {
 					//$this->recargarEmrpesa();
@@ -1566,7 +1566,7 @@ class AdmController extends AppController{
 		$resultado2 = $listadC->ListaDispositivo->find('all',$options2);
 		$this->set('listaDispositivos',$resultado2);
 		
-		$options['fields'] = array('Video.idVideo','Video.descripcion','Video.idEmpresa','empresa.Nombre');
+		$options['fields'] = array('Video.idVideo','Video.descripcion','Video.idEmpresa','empresa.nombre');
 		$options['conditions'] = array('Video.idEmpresa = '.$resultado2[0]['dispositivo']['idEmpresa']);
 		$options['joins'] = array(
 				array('table' => 'empresa',
@@ -1855,10 +1855,10 @@ class AdmController extends AppController{
 		$this->loadModel('AgenciaUsuario');
 		$this->loadModel('Empresa');
 
-		$options['fields'] = array('Agencia.id','Agencia.idAgente','Agencia.idCliente','Agencia.nivel','empresa.Nombre','count(distinct agenciaUsuario.idUsuario) usuarios');
+		$options['fields'] = array('Agencia.id','Agencia.idAgente','Agencia.idCliente','Agencia.nivel','empresa.nombre','count(distinct agenciaUsuario.idUsuario) usuarios');
 		$options['group'] = array('Agencia.id');
 		$options['conditions'] = array('Agencia.idCliente ='.$idEmpresa);
-		$options['order'] = array('empresa.Nombre DESC');
+		$options['order'] = array('empresa.nombre DESC');
 		$options['joins'] = array(
 				array('table' => 'empresa',			
 						'type' => 'left',
@@ -1884,7 +1884,7 @@ class AdmController extends AppController{
 	public function asignarAgencia($idEmpresa = null){
 		$this->loadModel('Empresa');
 		
-		$options['fields'] = array('Empresa.idEmpresa','Empresa.Nombre');
+		$options['fields'] = array('Empresa.idEmpresa','Empresa.nombre');
 		$options['conditions'] = array("Empresa.idEmpresa NOT IN (SELECT `agencia`.`idAgente` FROM `agencia` WHERE `agencia`.`idCliente`= '".$idEmpresa."') and Empresa.idEmpresa != '".$idEmpresa."'");
 		$options['order'] = ('Empresa.idEmpresa');
 		
