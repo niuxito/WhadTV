@@ -5,7 +5,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('idEmpresa');?></th>
-			<th><?php echo $this->Paginator->sort('Nombre');?></th>
+			<th><?php echo $this->Paginator->sort('nombre');?></th>
 			<th><?php echo $this->Paginator->sort('Logo');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -14,7 +14,7 @@
 	foreach ($empresas as $empresa): ?>
 	<tr>
 		<td><?php echo $this->Html->link($empresa['Empresa']['idEmpresa'], array('action' => 'edit', $empresa['Empresa']['idEmpresa'])); ?>&nbsp;</td>
-		<td><?php echo h($empresa['Empresa']['Nombre']); ?>&nbsp;</td>
+		<td><?php echo h($empresa['Empresa']['nombre']); ?>&nbsp;</td>
 		<td>
 		<a><?php echo $this->Html->image( $empresa['Empresa']['url'], array('class'=>'logo', 'id'=>$empresa['Empresa']['idEmpresa'], 'width'=>'80', 'height'=>'80') ); ?>
 		<!--<img id="<?php echo $empresa['Empresa']['idEmpresa']; ?>" class="logo" src="/GestVideo/<?php echo $empresa['Empresa']['url']; ?>"  width="80" height="80" ></img>--></a></td>

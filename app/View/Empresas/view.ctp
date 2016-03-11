@@ -6,9 +6,9 @@
 			<?php echo h($empresa['Empresa']['idEmpresa']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Nombre'); ?></dt>
+		<dt><?php echo __('nombre'); ?></dt>
 		<dd>
-			<?php echo h($empresa['Empresa']['Nombre']); ?>
+			<?php echo h($empresa['Empresa']['nombre']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Url'); ?></dt>

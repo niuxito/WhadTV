@@ -26,8 +26,8 @@
 <?php echo $this->Form->create('Empresa');?>
 
 <label for="titol_empresa" class="fld fmdm ini">
-<h3>Nombre de la empresa:</h3>
-<?php echo $this->Form->input('Nombre', array('class'=>'inpt', 'type'=>'text', 'label'=>false, 'maxlength'=>80)); ?>
+<h3>nombre de la empresa:</h3>
+<?php echo $this->Form->input('nombre', array('class'=>'inpt', 'type'=>'text', 'label'=>false, 'maxlength'=>80)); ?>
 
 
 </label>

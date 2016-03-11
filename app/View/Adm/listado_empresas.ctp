@@ -24,15 +24,15 @@
 	foreach ($empresas as $empresa): ?>
 	<li>
 		<span class="selm"><?php echo h($empresa['Empresa']['idEmpresa']); ?>&nbsp;</span>
-		<span ><?php echo $this->Html->link(h($empresa['Empresa']['Nombre']), array('action' => 'gestEmpresa', $empresa['Empresa']['idEmpresa']),array('title'=>'Gestionar datos', 'class'=>'selm1')); ?>&nbsp;</span>
+		<span ><?php echo $this->Html->link(h($empresa['Empresa']['nombre']), array('action' => 'gestEmpresa', $empresa['Empresa']['idEmpresa']),array('title'=>'Gestionar datos', 'class'=>'selm1')); ?>&nbsp;</span>
 		<div class="ops">
 		<?php echo $this->Html->Link($this->Html->image('px_tr.gif'), array('action'=>'listadoagenciasempresa', $empresa['Empresa']['idEmpresa']), array('title'=>'Agencias', 'escape'=>false, 'class'=>'btn st_agen')); ?>
 		 <span class="inf"><?php echo $empresa['0']['agencias']; ?></span>
-		<a class="btn st_vido" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/videosxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Número de vídeos de: <b><?php echo h($empresa['Empresa']['Nombre']); ?></b>');return false" title="Número de vídeos"><?php echo $this->Html->image("px_tr.gif"); ?></a>
+		<a class="btn st_vido" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/videosxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Número de vídeos de: <b><?php echo h($empresa['Empresa']['nombre']); ?></b>');return false" title="Número de vídeos"><?php echo $this->Html->image("px_tr.gif"); ?></a>
 		 <span class="inf"><?php echo $empresa['0']['videos']; ?></span>
-		<a class="btn st_list" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/listasxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Listas de reproducción de: <b><?php echo h($empresa['Empresa']['Nombre']); ?></b>');return false" title="Listas de reproducción"><?php echo $this->Html->image("px_tr.gif"); ?></a>
+		<a class="btn st_list" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/listasxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Listas de reproducción de: <b><?php echo h($empresa['Empresa']['nombre']); ?></b>');return false" title="Listas de reproducción"><?php echo $this->Html->image("px_tr.gif"); ?></a>
 		 <span class="inf"><?php echo $empresa['0']['listas']; ?></span>
-		<!--<a class="btn st_disp" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/dispositivosxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Dispositivos de: <b><?php echo h($empresa['Empresa']['Nombre']); ?></b>');return false" title="Dispositivos"><?php echo $this->Html->image("px_tr.gif"); ?></a>
+		<!--<a class="btn st_disp" href="#" onClick="openSubWin('<?php echo $this->Html->url("/",true); ?>/Adm/dispositivosxempresa/<?php echo h($empresa['Empresa']['idEmpresa']); ?>',700,300,2,'Dispositivos de: <b><?php echo h($empresa['Empresa']['nombre']); ?></b>');return false" title="Dispositivos"><?php echo $this->Html->image("px_tr.gif"); ?></a>
 		 <span class="inf"><?php echo $empresa['0']['dispositivos']; ?></span>-->
 		<?php echo $this->Html->Link($this->Html->image('px_tr.gif'), array('action'=>'listadodispositivosempresa', $empresa['Empresa']['idEmpresa']), array('title'=>'Dispositivos', 'escape'=>false, 'class'=>'btn st_disp')); ?>
 		 <span class="inf"><?php echo $empresa['0']['dispositivos']; ?></span>
@@ -50,7 +50,7 @@
 			$this->Html->image("px_tr.gif"),
 			 array('controller'=>'Empresas', 'action' => 'delete', $empresa['Empresa']['idEmpresa']),
 	    	array('escape' => false, 'class'=>'btn st_delt', 'title'=>'Eliminar empresa'),
-	    	 __('¿Desea eliminar la empresa '. $empresa['Empresa']['Nombre'] .' realmente?'));
+	    	 __('¿Desea eliminar la empresa '. $empresa['Empresa']['nombre'] .' realmente?'));
 		?>
 		-->
 		</div>

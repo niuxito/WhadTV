@@ -11,7 +11,7 @@
 			foreach ($empresas as $emp): ?>
 			<li>
 				<td><?php echo h($emp['Empresa']['idEmpresa']); ?>&nbsp;</td>
-				<td><?php echo h($emp['Empresa']['Nombre']); ?>&nbsp;</td>
+				<td><?php echo h($emp['Empresa']['nombre']); ?>&nbsp;</td>
 				<div class="ops">
 					<?php echo $this->Form->postLink($this->Html->image('px_tr.gif'), array('action'=>'deleteEmpresasUsuarios', $emp['empresaUsuario']['id']),array('title'=>'Dar de baja en esta empresa','escape'=>false, 'class'=>'btn st_del') ,__('¿Estás seguro de que deseas dar de baja al usuario en esta empresa?')); ?>
 					<!--<span class="inf"><?php echo $empusu['0']['empresas']; ?></span>-->

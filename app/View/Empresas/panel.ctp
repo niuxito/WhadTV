@@ -13,7 +13,7 @@
 	
 	<tr>
 		<td><?php echo $this->Html->link($empresa['Empresa']['idEmpresa'], array('action' => 'edit', $empresa['Empresa']['idEmpresa'])); ?>&nbsp;</td>
-		<td><?php echo h($empresa['Empresa']['Nombre']); ?>&nbsp;</td>
+		<td><?php echo h($empresa['Empresa']['nombre']); ?>&nbsp;</td>
 		<td><a><img id="<?php echo $empresa['Empresa']['idEmpresa']; ?>" class="logo" src="/GestVideo/<?php echo $empresa['Empresa']['url']; ?>"  width="80" height="80" ></img></a></td>
 		
 		<td class="actions">
