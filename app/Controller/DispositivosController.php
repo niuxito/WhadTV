@@ -482,9 +482,9 @@ class DispositivosController extends AppController {
 		if($tipoContenido == 'imagen'){
 			$url = $contenido['imgs'][$orientacion]['720p'];
 		}else{
-			$url = @$contenido[$tiempo][$orientacion][$medidas]['webm'];
+			$url = @$contenido[$tiempo][$orientacion][$medidas]['mp4'];
 			if( is_null( $url ) ){
-				$url = $contenido[$tiempo][$orientacion]['720x1080']['webm'];
+				$url = $contenido[$tiempo][$orientacion]['720x1080']['mp4'];
 			}
 		}
 		return $url;
