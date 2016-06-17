@@ -707,7 +707,7 @@ class VideosController extends AppController {
 	 * @TODO Obtener los alto y ancho máximos de los dispositivos de una empresa
 	*/
 	function getMaxAltoAnchoDispositivos($empresaId){
-		return array('alto'=>1080, 'ancho'=>1920);
+		return array('alto'=>720, 'ancho'=>1280);
 	}
 	
 	function uploadVideo($folder, $file, $itemId = null){
