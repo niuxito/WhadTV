@@ -39,7 +39,8 @@
 <ul>
 <?php foreach($dispositivos as $dispositivo){ ?>
 
-<li class="ini"><input type="checkbox" name="chec[]" value="<?php echo h($dispositivo['Reproductor']['idDispositivo'])?>"><a class="titl" href="index_llista.htm"><span class="selm"><?php echo h($dispositivo['Reproductor']['descripcion'])?></span></a>
+<li class="ini"><input type="checkbox" name="chec[]" value="<?php echo h($dispositivo['Reproductor']['idDispositivo'])?>">
+<?php echo h($dispositivo['Reproductor']['descripcion'])?></span>
 	<div class="ops">
 	<ol>
 	<li class="min"><span class="ico refrsh"><?php echo $this->Html->image('px_tr.gif')?></span></li>
