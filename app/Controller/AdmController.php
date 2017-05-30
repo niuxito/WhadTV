@@ -755,7 +755,7 @@ class AdmController extends AppController{
 		$videosC->eliminarArchivo( $videosC->Video->data['Video']['url'] );
 		$videosC->eliminarArchivo( 'img/'.$videosC->Video->data['Video']['fotograma']);
 		if ($videosC->Video->delete()) {
-			$listavC->ListaVideo->deleteAll('idVideo = '.$idVideo);
+			$listavC->ListaVideo->deleteAll('ListaVideo.idVideo = '.$idVideo);
 			
 			$this->Session->setFlash(__('El video ha sido eliminado correctamente.'), 'info');
 			$this->redirect(array('action'=>'listadoVideos'));

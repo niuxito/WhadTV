@@ -469,6 +469,7 @@ class VideosController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 
+			$this->redirect(array('action' => 'index'));
 	
 	}
 	
