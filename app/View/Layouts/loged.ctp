@@ -1,4 +1,4 @@
-	<?php
+<?php
 header("Content-Type: text/event-stream\n\n");
 ?><?php
 /**
@@ -156,7 +156,7 @@ $title_for_layout = __d('WhadTV', 'Tu marca everywhere');
 	jQ(document).ready(function(){
 		jQ(window).resize(function(){ if(!zd_rs){ zd_rs=1; setTimeout("ftrPst();zd_rs=0;", 100); } });
 		ftrPst();
-	//	$('.ini.txt').dropdown();
+		jQ('.ini.txt').dropdown();
 	});
 
 //]]></script>
