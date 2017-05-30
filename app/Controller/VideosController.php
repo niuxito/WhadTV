@@ -312,6 +312,7 @@ class VideosController extends AppController {
 		$this->Video->create();
 		if(array_key_exists('Document', $this->data['Video']) || array_key_exists('cartel', $this->data['Video'])){
 			$this->request->data['Video']['estado'] = 'sin procesar';
+			$this->request->data['Video']['timestamp'] = time();
 			if ($this->Video->save($this->request->data)) {
 				return true;
 			}
@@ -391,6 +392,7 @@ class VideosController extends AppController {
 	 */
 	public function addFile() 
 	{
+		$this->autoRender = false;
 		if ($this->request->is('post')) {
 
 			if($this->add()){
@@ -399,12 +401,12 @@ class VideosController extends AppController {
 				$imagenOk = $this->validarTipoFichero($this->request->data['Video']['Document'], $image_type);
 				if( $imagenOk ){
 					$this->addImagen();
-					return;
+					return 'ok';
 				}else{
 					$videoOk = $this->validarTipoFichero($this->request->data['Video']['Document'], $video_type);
 					if( $videoOk ){
 						$this->addVideo();
-						return;
+						return 'ok';
 					}
 				}
 
