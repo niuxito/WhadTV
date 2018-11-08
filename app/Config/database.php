@@ -63,9 +63,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'whadtv',
-		'password' => 'v3ct0r3s.-',
-		'database' => 'GestVideo',
+		'login' => 'username',
+		'password' => 'password',
+		'database' => 'databasename',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
