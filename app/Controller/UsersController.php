@@ -297,7 +297,10 @@ class UsersController extends AppController {
     	 * Comprobar que el usuario ha aceptado las condiciones
     	 */
     	$resultadoU = $this->User->find("all", array('conditions' => "username = '".$user['username']."'"));
-    	$id = $resultadoU[0]['User']['id'];
+		$id = $resultadoU[0]['User']['id'];
+
+		$this->User->id = $id;
+		$this->User->save();
     	
     	if($resultadoU[0]['User']['nivel'] > 99){
     		$this->Session->setFlash(__('Debes confirmar tu registro. Mira la bandeja de entrada de tu correo.'), 'info');
